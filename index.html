@@ -33,8 +33,8 @@
   .world .sun,.world .dusk{position:absolute;inset:0;transition:opacity 1.6s ease}
   .world .sun{background:linear-gradient(180deg,#B2410E 0%,#EF8330 45%,#FFD08A 100%);opacity:var(--warm)}
   .world .dusk{background:linear-gradient(180deg,#1B44BE 0%,#4D6BE0 38%,#E0885A 78%,#FFC978 100%);opacity:var(--dusk)}
-  .cloud{position:absolute;width:var(--w);height:calc(var(--w) * .42);left:var(--x);top:var(--y);opacity:.7;animation:drift var(--t) ease-in-out infinite alternate;animation-delay:var(--dl)}
-  .cloud i{position:absolute;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.98),rgba(255,255,255,.75) 50%,rgba(255,255,255,0) 100%);filter:blur(14px)}
+  .cloud{position:absolute;width:var(--w);height:calc(var(--w) * .42);left:var(--x);top:var(--y);opacity:.7;will-change:transform;animation:drift var(--t) ease-in-out infinite alternate;animation-delay:var(--dl)}
+  .cloud i{position:absolute;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.9),rgba(255,255,255,.55) 40%,rgba(255,255,255,.18) 70%,rgba(255,255,255,0) 100%)}
   .cloud i:nth-child(1){left:0;top:20%;width:60%;height:80%}
   .cloud i:nth-child(2){left:30%;top:0;width:55%;height:100%}
   .cloud i:nth-child(3){left:55%;top:25%;width:45%;height:75%}
@@ -56,8 +56,9 @@
   .nav{display:flex;gap:6px}
 
   /* ---------- hero: the pupil ---------- */
-  .hero{position:relative;z-index:2;height:240vh}
-  .hero-sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;--r:120px;--iris:320px;--copy:1;--catch:1;--irisop:1;--ex:60%;--ey:46%}
+  .hero{position:relative;z-index:2;height:100vh;height:100svh}
+  html.is-opening{overflow:hidden}
+  .hero-sticky{position:relative;height:100vh;height:100svh;overflow:hidden;--r:120px;--iris:320px;--copy:1;--catch:1;--irisop:1;--ex:60%;--ey:46%}
   .hero-ground{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 45%,#2B2B30 0%,#17171A 50%,#0E0E10 100%);
     -webkit-mask-image:radial-gradient(circle var(--r) at var(--ex) var(--ey),transparent 98.5%,#000 100%);mask-image:radial-gradient(circle var(--r) at var(--ex) var(--ey),transparent 98.5%,#000 100%)}
   .iris{position:absolute;left:var(--ex);top:var(--ey);width:var(--iris);height:var(--iris);transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;opacity:var(--irisop);
@@ -77,9 +78,9 @@
   .hero-mark{position:absolute;right:clamp(20px,5vw,72px);bottom:clamp(26px,8vh,80px);display:flex;gap:14px;align-items:center;opacity:var(--copy);text-align:left}
   .hero-mark .s{font-size:64px;line-height:.8}
   .hero-mark p{font-size:12.5px;font-weight:300;color:rgba(255,255,255,.6);max-width:24ch;line-height:1.4}
-  .scroll-hint{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);font-size:12px;letter-spacing:.18em;color:rgba(255,255,255,.55);opacity:var(--copy);display:flex;flex-direction:column;align-items:center;gap:8px}
-  .scroll-hint i{width:1px;height:34px;background:linear-gradient(#fff,rgba(255,255,255,0));animation:hint 1.8s ease-in-out infinite}
-  @keyframes hint{0%,100%{transform:scaleY(.4);transform-origin:top;opacity:.4}50%{transform:scaleY(1);opacity:1}}
+  .open-btn{position:absolute;left:50%;bottom:clamp(22px,5vh,44px);transform:translateX(-50%);padding:15px 26px;font-size:15px;box-shadow:0 10px 30px rgba(0,0,0,.35),0 0 60px rgba(47,111,240,.25);opacity:var(--copy);white-space:nowrap}
+  .open-btn:hover{transform:translateX(-50%) translateY(-1px)}
+  .open-btn .s{font-size:1.5em;line-height:.8;margin-right:2px}
 
   /* ---------- sections on the world ---------- */
   .section{position:relative;z-index:1;padding:clamp(72px,12vh,150px) clamp(18px,4vw,48px);scroll-margin-top:40px}
@@ -91,7 +92,7 @@
   /* carousel of the five parts */
   .carousel{position:relative;height:500px;margin-top:44px;perspective:1500px;perspective-origin:50% 42%}
   .card{position:absolute;left:50%;top:50%;width:380px;height:430px;margin:-215px 0 0 -190px;border-radius:28px;padding:30px 30px 26px;
-    background:var(--glass);border:1px solid var(--glass-line);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);color:#fff;
+    background:var(--glass);border:1px solid var(--glass-line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:#fff;
     display:flex;flex-direction:column;gap:12px;text-align:left;cursor:pointer;will-change:transform;
     transition:transform .85s cubic-bezier(.2,.7,.2,1),opacity .6s,background .6s,color .6s,box-shadow .85s,border-color .6s}
   .card.is-active{background:var(--paper);color:var(--ink);cursor:default;border-color:#fff;box-shadow:0 30px 80px rgba(0,0,0,.28),0 0 130px rgba(255,255,255,.6)}
@@ -122,7 +123,7 @@
   .ch-head .who{font-size:15px;font-weight:500;color:#fff;margin-bottom:10px;text-shadow:0 1px 3px rgba(0,0,0,.35)}
   .ch-head h2{font-size:clamp(32px,4.6vw,60px);text-shadow:0 2px 6px rgba(0,0,0,.25),0 6px 40px rgba(0,0,0,.35)}
   .ch-body{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:start}
-  .panel{background:var(--glass);border:1px solid var(--glass-line);backdrop-filter:blur(26px) saturate(120%);-webkit-backdrop-filter:blur(26px) saturate(120%);border-radius:30px;padding:clamp(24px,3.2vw,40px);box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 24px 60px rgba(0,0,0,.18)}
+  .panel{background:var(--glass);border:1px solid var(--glass-line);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:30px;padding:clamp(24px,3.2vw,40px);box-shadow:inset 0 1px 0 rgba(255,255,255,.18),0 24px 60px rgba(0,0,0,.18)}
   .panel .key{font-size:clamp(22px,2.6vw,30px);font-weight:300;line-height:1.22;letter-spacing:-.015em;text-wrap:pretty}
   .points{list-style:none;margin:26px 0 0;padding:0;display:grid}
   .points li{padding:16px 0;border-top:1px solid rgba(255,255,255,.22);font-size:17.5px;font-weight:300;line-height:1.5;color:#fff;text-wrap:pretty}
@@ -170,10 +171,11 @@
     .nav{display:none}
     .hero{height:200vh}
     .hero-sticky{--ex:50%;--ey:33%}
-    .hero-copy{max-width:none;right:20px;bottom:36px}
+    .hero-copy{max-width:none;right:20px;bottom:96px}
     .hero-copy h1{font-size:clamp(34px,10vw,44px)}
     .hero-copy p{font-size:14px;margin-top:12px}
-    .hero-mark,.scroll-hint{display:none}
+    .hero-mark{display:none}
+    .open-btn{width:calc(100% - 40px);justify-content:center}
     .carousel{height:440px;perspective:1100px}
     .card{width:280px;height:400px;margin:-200px 0 0 -140px}
     .ch-head{grid-template-columns:1fr;gap:6px}
@@ -227,7 +229,7 @@
       <span class="s" aria-hidden="true">cs.</span>
       <p>Cuarto aspecto de la conciencia social en el modelo de inteligencia social de Daniel Goleman.</p>
     </div>
-    <div class="scroll-hint" aria-hidden="true"><span>desliza para entrar</span><i></i></div>
+    <button class="pill open-btn" id="open" type="button"><span class="s">Ver</span> el mundo con otros ojos</button>
   </div>
 </section>
 
@@ -431,14 +433,11 @@
   function setWorld(warm, dusk){ root.style.setProperty('--warm', String(warm)); root.style.setProperty('--dusk', String(dusk)); }
   const WORLD = { inicio:[0,0], recorrido:[0,0], p1:[0,0], p2:[0,0], p3:[0,0], p4:[1,0], p5:[0,1], cierre:[0,1] };
 
-  /* ---------- hero scroll ---------- */
-  const hero = $('#inicio'), heroS = $('#heroS');
-  let ticking = false;
-  function paintHero(){
-    ticking = false;
+  /* ---------- hero: the eye opens on demand ---------- */
+  const hero = $('#inicio'), heroS = $('#heroS'), openBtn = $('#open');
+  let eye = 0, animating = false;          // eye: 0 closed, 1 open
+  function paint(p){
     const vh = window.innerHeight, vw = window.innerWidth;
-    const max = Math.max(1, hero.offsetHeight - vh);
-    const p = Math.min(1, Math.max(0, window.scrollY / max));
     const e = p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
     const vmin = Math.min(vw, vh), vmax = Math.max(vw, vh);
     const rMin = vmin * (vw < 640 ? .2 : .17), rMax = vmax * .82;
@@ -448,11 +447,43 @@
     heroS.style.setProperty('--copy', Math.max(0, 1 - p * 2.4).toFixed(3));
     heroS.style.setProperty('--catch', Math.max(0, 1 - p * 3.2).toFixed(3));
     heroS.style.setProperty('--irisop', Math.max(0, Math.min(1, 1 - (p - .55) / .3)).toFixed(3));
+    openBtn.style.pointerEvents = p > .2 ? 'none' : '';
   }
-  function onScroll(){ if (!ticking){ ticking = true; requestAnimationFrame(paintHero); } }
-  window.addEventListener('scroll', onScroll, { passive:true });
-  window.addEventListener('resize', onScroll);
-  paintHero();
+  function animate(from, to, dur, done){
+    if (reduced()){ paint(to); done && done(); return; }
+    animating = true;
+    const t0 = performance.now();
+    (function step(now){
+      const t = Math.min(1, (now - t0) / dur);
+      paint(from + (to - from) * t);
+      if (t < 1) requestAnimationFrame(step); else { animating = false; done && done(); }
+    })(t0);
+  }
+  function openEye(){
+    if (eye === 1 || animating) return;
+    document.documentElement.classList.add('is-opening');
+    animate(0, 1, 1900, () => {
+      eye = 1;
+      document.documentElement.classList.remove('is-opening');
+      $('#recorrido').scrollIntoView({ behavior: reduced() ? 'auto' : 'smooth', block: 'start' });
+    });
+  }
+  function closeEye(){
+    if (eye === 0 || animating) return;
+    animate(1, 0, 700, () => { eye = 0; });
+  }
+  openBtn.addEventListener('click', openEye);
+  heroS.addEventListener('wheel', e => {
+    if (e.deltaY > 0 && eye === 0 && window.scrollY < 8){ e.preventDefault(); openEye(); }
+  }, { passive:false });
+  let hy = null;
+  heroS.addEventListener('touchstart', e => { hy = e.touches[0].clientY; }, { passive:true });
+  heroS.addEventListener('touchmove', e => {
+    if (hy === null || eye !== 0 || window.scrollY > 8) return;
+    if (hy - e.touches[0].clientY > 30){ hy = null; e.preventDefault(); openEye(); }
+  }, { passive:false });
+  window.addEventListener('resize', () => paint(eye));
+  paint(0);
 
   /* ---------- section tracking: nav + world ---------- */
   let section = 'inicio';
@@ -462,6 +493,7 @@
   Object.keys(WORLD).forEach(id => io.observe($('#' + id)));
   function applySection(){
     $$('[data-nav]').forEach(a => a.classList.toggle('is-active', a.dataset.nav === section));
+    if (section === 'inicio') closeEye();
     const w = WORLD[section] || [0,0];
     setWorld(w[0], w[1]);
   }
@@ -523,6 +555,7 @@
 
   document.addEventListener('keydown', e => {
     if (e.target.matches('input,textarea') || e.altKey || e.ctrlKey || e.metaKey) return;
+    if (section === 'inicio' && eye === 0 && ['ArrowDown','PageDown',' ','Enter'].includes(e.key) && e.target === document.body){ e.preventDefault(); openEye(); return; }
     if (section !== 'recorrido') return;
     if (e.key === 'ArrowRight'){ e.preventDefault(); go(active + 1); }
     else if (e.key === 'ArrowLeft'){ e.preventDefault(); go(active - 1); }
