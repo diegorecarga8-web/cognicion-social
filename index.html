@@ -1,0 +1,600 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Cognición Social</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Hanken+Grotesk:wght@300;400;500;600&display=swap">
+</head>
+<body>
+<style>
+  :root{
+    --ground:#131316;
+    --ink:#12192B; --muted:#5C6479; --paper:#FFFFFF; --paper-2:#F1F3F8;
+    --accent:#2457C5; --accent-soft:#E4ECFF;
+    --glass:rgba(255,255,255,.16); --glass-line:rgba(255,255,255,.42);
+    --script:"Pinyon Script","Brush Script MT",cursive;
+    --sans:"Hanken Grotesk",system-ui,"Segoe UI",Roboto,sans-serif;
+    --warm:0; --dusk:0;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--ground);color:#fff;font:400 17px/1.5 var(--sans);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  button{font:inherit;color:inherit;cursor:pointer}
+  h1,h2,h3{margin:0;font-weight:300;letter-spacing:-.02em;line-height:1.02;text-wrap:balance}
+  p{margin:0}
+  a{color:inherit}
+  :focus-visible{outline:3px solid #fff;outline-offset:3px;border-radius:12px}
+  .s{font-family:var(--script);font-weight:400;letter-spacing:0;font-size:1.25em;line-height:.9}
+
+  /* ---------- the world (fixed behind everything) ---------- */
+  .world{position:fixed;inset:0;z-index:0;overflow:hidden;background:linear-gradient(180deg,#1D46C8 0%,#2F6FF0 45%,#85BFFF 100%)}
+  .world .sun,.world .dusk{position:absolute;inset:0;transition:opacity 1.6s ease}
+  .world .sun{background:linear-gradient(180deg,#B2410E 0%,#EF8330 45%,#FFD08A 100%);opacity:var(--warm)}
+  .world .dusk{background:linear-gradient(180deg,#1B44BE 0%,#4D6BE0 38%,#E0885A 78%,#FFC978 100%);opacity:var(--dusk)}
+  .cloud{position:absolute;width:var(--w);height:calc(var(--w) * .42);left:var(--x);top:var(--y);opacity:.9;animation:drift var(--t) ease-in-out infinite alternate;animation-delay:var(--dl)}
+  .cloud i{position:absolute;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.98),rgba(255,255,255,.75) 50%,rgba(255,255,255,0) 100%);filter:blur(14px)}
+  .cloud i:nth-child(1){left:0;top:20%;width:60%;height:80%}
+  .cloud i:nth-child(2){left:30%;top:0;width:55%;height:100%}
+  .cloud i:nth-child(3){left:55%;top:25%;width:45%;height:75%}
+  @keyframes drift{from{transform:translateX(-4vw)}to{transform:translateX(4vw)}}
+
+  /* ---------- top bar ---------- */
+  .top{position:fixed;top:0;left:0;right:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px clamp(18px,4vw,48px);pointer-events:none}
+  .top > *{pointer-events:auto}
+  .wordmark{display:flex;align-items:baseline;gap:7px;text-decoration:none;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.25)}
+  .wordmark .s{font-size:34px;line-height:1}
+  .wordmark .l{font-weight:300;font-size:18px;opacity:.92}
+  .actions{display:flex;gap:8px;align-items:center}
+  .pill{border:0;background:#fff;color:#111;border-radius:999px;padding:10px 18px;font-weight:500;font-size:14px;display:inline-flex;align-items:center;gap:8px;text-decoration:none;box-shadow:0 8px 22px rgba(0,0,0,.18);transition:transform .15s,background .25s,color .25s}
+  .pill:hover{transform:translateY(-1px)}
+  .pill.glass{background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.4);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:none}
+  .pill.glass.is-active{background:#fff;color:#111}
+  .pill.icon{width:40px;height:40px;padding:0;justify-content:center}
+  .pill.num{width:40px;height:40px;padding:0;justify-content:center;font-variant-numeric:tabular-nums}
+  .nav{display:flex;gap:6px}
+
+  /* ---------- hero: the pupil ---------- */
+  .hero{position:relative;z-index:2;height:240vh}
+  .hero-sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;--r:120px;--iris:320px;--copy:1;--catch:1;--irisop:1;--ex:60%;--ey:46%}
+  .hero-ground{position:absolute;inset:0;background:radial-gradient(120% 90% at 50% 45%,#2B2B30 0%,#17171A 50%,#0E0E10 100%);
+    -webkit-mask-image:radial-gradient(circle var(--r) at var(--ex) var(--ey),transparent 98.5%,#000 100%);mask-image:radial-gradient(circle var(--r) at var(--ex) var(--ey),transparent 98.5%,#000 100%)}
+  .iris{position:absolute;left:var(--ex);top:var(--ey);width:var(--iris);height:var(--iris);transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;opacity:var(--irisop);
+    background:
+      repeating-conic-gradient(from 0deg,rgba(255,255,255,.16) 0deg .5deg,rgba(255,255,255,0) .5deg 2.2deg),
+      repeating-conic-gradient(from 1.1deg,rgba(6,12,40,.35) 0deg .7deg,rgba(0,0,0,0) .7deg 5.3deg),
+      radial-gradient(circle,rgba(0,0,0,0) 0 74.4%,#070C22 74.6%,#152E7E 77.5%,#2557CF 84%,#4C86F0 90.5%,#1C3A8C 96.5%,#060A1C 99.2%,rgba(6,10,28,0) 100%);
+    -webkit-mask-image:radial-gradient(circle,transparent 74.4%,#000 74.9%,#000 99.3%,transparent 100%);mask-image:radial-gradient(circle,transparent 74.4%,#000 74.9%,#000 99.3%,transparent 100%);
+    box-shadow:0 0 140px rgba(47,111,240,.35)}
+  .lid{position:absolute;left:var(--ex);top:var(--ey);width:calc(var(--iris) * 1.02);height:calc(var(--iris) * 1.02);transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;opacity:var(--irisop);
+    box-shadow:inset 0 30px 60px rgba(0,0,0,.55),inset 0 -14px 40px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.06)}
+  .catch{position:absolute;left:calc(var(--ex) - var(--r) * .48);top:calc(var(--ey) - var(--r) * .62);width:calc(var(--r) * .5);height:calc(var(--r) * .3);border-radius:50%;pointer-events:none;
+    background:radial-gradient(closest-side,rgba(255,255,255,.95),rgba(255,255,255,.35) 60%,rgba(255,255,255,0));transform:rotate(-28deg);opacity:var(--catch)}
+  .hero-copy{position:absolute;left:clamp(20px,5vw,72px);bottom:clamp(26px,8vh,80px);max-width:min(600px,58vw);opacity:var(--copy);transform:translateY(calc((1 - var(--copy)) * 24px))}
+  .hero-copy h1{font-size:clamp(40px,5.8vw,84px);text-shadow:0 2px 24px rgba(0,0,0,.35)}
+  .hero-copy p{margin-top:18px;font-size:16px;font-weight:300;color:rgba(255,255,255,.7);max-width:46ch}
+  .hero-mark{position:absolute;right:clamp(20px,5vw,72px);bottom:clamp(26px,8vh,80px);display:flex;gap:14px;align-items:center;opacity:var(--copy);text-align:left}
+  .hero-mark .s{font-size:64px;line-height:.8}
+  .hero-mark p{font-size:12.5px;font-weight:300;color:rgba(255,255,255,.6);max-width:24ch;line-height:1.4}
+  .scroll-hint{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);font-size:12px;letter-spacing:.18em;color:rgba(255,255,255,.55);opacity:var(--copy);display:flex;flex-direction:column;align-items:center;gap:8px}
+  .scroll-hint i{width:1px;height:34px;background:linear-gradient(#fff,rgba(255,255,255,0));animation:hint 1.8s ease-in-out infinite}
+  @keyframes hint{0%,100%{transform:scaleY(.4);transform-origin:top;opacity:.4}50%{transform:scaleY(1);opacity:1}}
+
+  /* ---------- sections on the world ---------- */
+  .section{position:relative;z-index:1;padding:clamp(72px,12vh,150px) clamp(18px,4vw,48px);scroll-margin-top:0}
+  .wrap{max-width:1140px;margin-inline:auto}
+  .head{text-align:center;max-width:760px;margin-inline:auto}
+  .head h2{font-size:clamp(36px,5.4vw,68px);text-shadow:0 2px 24px rgba(0,0,0,.18)}
+  .head p{margin:16px auto 0;color:rgba(255,255,255,.86);font-size:17px;font-weight:300;max-width:54ch}
+
+  /* carousel of the five parts */
+  .carousel{position:relative;height:500px;margin-top:44px;perspective:1500px;perspective-origin:50% 42%}
+  .card{position:absolute;left:50%;top:50%;width:380px;height:430px;margin:-215px 0 0 -190px;border-radius:28px;padding:30px 30px 26px;
+    background:var(--glass);border:1px solid var(--glass-line);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:#fff;
+    display:flex;flex-direction:column;gap:12px;text-align:left;cursor:pointer;will-change:transform;
+    transition:transform .85s cubic-bezier(.2,.7,.2,1),opacity .6s,background .6s,color .6s,box-shadow .85s,border-color .6s}
+  .card.is-active{background:var(--paper);color:var(--ink);cursor:default;border-color:#fff;box-shadow:0 30px 80px rgba(0,0,0,.28),0 0 130px rgba(255,255,255,.6)}
+  .card.is-far{opacity:0;pointer-events:none}
+  .card .who{font-size:14px;font-weight:500;opacity:.85}
+  .card.is-active .who{color:var(--accent);opacity:1}
+  .card .n{font-family:var(--script);font-size:72px;line-height:.8;opacity:.95}
+  .card.is-active .n{color:var(--accent)}
+  .card h3{font-weight:400;font-size:29px;line-height:1.06}
+  .card .body{display:flex;flex-direction:column;gap:14px;font-size:15.5px;line-height:1.45;opacity:0;visibility:hidden;transition:opacity .5s,visibility .5s;flex:1}
+  .card.is-active .body{opacity:1;visibility:visible;transition-delay:.3s}
+  .card .body a{margin-top:auto;align-self:flex-start}
+  .btn{border:0;background:var(--ink);color:#fff;border-radius:999px;padding:12px 22px;font-weight:500;display:inline-flex;align-items:center;gap:8px;text-decoration:none;transition:transform .15s}
+  .btn:hover{transform:translateY(-1px)}
+  .btn.light{background:var(--paper-2);color:var(--ink)}
+  .car-nav{display:flex;justify-content:center;gap:10px;margin-top:10px}
+  .car-nav .pill{width:48px;height:48px;padding:0;justify-content:center;font-size:20px;font-weight:300}
+  .rail{display:flex;justify-content:center;gap:10px;margin-top:22px}
+  .dot{width:9px;height:9px;border-radius:50%;border:0;padding:0;background:rgba(255,255,255,.42);transition:transform .3s,background .3s}
+  .dot.is-on{background:#fff;transform:scale(1.5)}
+  .rail-hint{text-align:center;margin-top:14px;font-size:13px;color:rgba(255,255,255,.62)}
+
+  /* chapters */
+  .chapter{position:relative;z-index:1;padding:clamp(72px,12vh,140px) clamp(18px,4vw,48px)}
+  .chapter .wrap{display:grid;grid-template-columns:1fr;gap:34px}
+  .ch-head{display:grid;grid-template-columns:auto 1fr;gap:clamp(18px,3vw,40px);align-items:end}
+  .ch-head .n{font-family:var(--script);font-size:clamp(96px,14vw,180px);line-height:.72;text-shadow:0 4px 30px rgba(0,0,0,.25)}
+  .ch-head .who{font-size:15px;font-weight:500;color:rgba(255,255,255,.85);margin-bottom:10px}
+  .ch-head h2{font-size:clamp(32px,4.6vw,60px);text-shadow:0 2px 24px rgba(0,0,0,.18)}
+  .ch-body{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:start}
+  .panel{background:var(--glass);border:1px solid var(--glass-line);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:30px;padding:clamp(24px,3.2vw,40px)}
+  .panel .key{font-size:clamp(22px,2.6vw,30px);font-weight:300;line-height:1.22;letter-spacing:-.015em;text-wrap:pretty}
+  .points{list-style:none;margin:26px 0 0;padding:0;display:grid}
+  .points li{padding:16px 0;border-top:1px solid rgba(255,255,255,.32);font-size:17px;font-weight:300;line-height:1.45;color:rgba(255,255,255,.94);text-wrap:pretty}
+  .points li b{font-weight:500}
+  .sheet{background:var(--paper);color:var(--ink);border-radius:30px;padding:clamp(24px,3.2vw,36px);box-shadow:0 30px 80px rgba(0,0,0,.22),0 0 110px rgba(255,255,255,.35);display:flex;flex-direction:column;gap:14px}
+  .sheet .lbl{font-size:14px;font-weight:500;color:var(--accent)}
+  .sheet .ex{font-size:clamp(19px,2vw,23px);font-weight:400;line-height:1.3;letter-spacing:-.01em;text-wrap:pretty}
+  .sheet .note{font-size:15px;color:var(--muted);line-height:1.45}
+  .sheet .close{margin-top:auto;padding-top:14px;border-top:1px solid #E6E9F1;font-family:var(--script);font-size:26px;line-height:1.05;color:var(--accent)}
+  details.script{border-radius:22px;background:rgba(0,0,0,.18);border:1px solid rgba(255,255,255,.22)}
+  details.script summary{cursor:pointer;padding:16px 22px;font-size:15px;font-weight:500;list-style:none;display:flex;align-items:center;gap:10px;color:rgba(255,255,255,.92)}
+  details.script summary::-webkit-details-marker{display:none}
+  details.script summary::before{content:"";width:8px;height:8px;border-right:1.5px solid #fff;border-bottom:1.5px solid #fff;transform:rotate(-45deg);transition:transform .25s;flex:none;margin-left:4px}
+  details.script[open] summary::before{transform:rotate(45deg)}
+  details.script .txt{padding:0 22px 22px;font-size:16px;font-weight:300;line-height:1.6;color:rgba(255,255,255,.9);max-width:72ch;display:grid;gap:12px}
+
+  /* mini map (chapter 5) */
+  .map{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+  .map .branch{border-radius:18px;padding:14px 16px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28)}
+  .map .branch b{display:block;font-weight:500;font-size:15px;margin-bottom:8px}
+  .map .branch span{display:block;font-size:14px;font-weight:300;padding:5px 0;border-top:1px solid rgba(255,255,255,.18)}
+  .map .branch span.me{background:#fff;color:var(--ink);font-weight:500;border-radius:10px;padding:8px 10px;border-top:0;margin-top:4px}
+  .map-root{text-align:center;font-size:14px;color:rgba(255,255,255,.8);margin-top:20px}
+  .map-root .s{font-size:1.6em;color:#fff}
+
+  /* conclusion & question */
+  .statement{text-align:center;max-width:860px;margin:0 auto}
+  .statement p{font-size:clamp(24px,3.4vw,40px);font-weight:300;line-height:1.2;letter-spacing:-.015em;text-shadow:0 2px 24px rgba(0,0,0,.18);text-wrap:pretty}
+  .statement p + p{margin-top:22px}
+  .question{max-width:900px;margin:clamp(56px,9vh,100px) auto 0}
+  .question .sheet{align-items:flex-start}
+  .question .q{font-size:clamp(24px,3vw,36px);font-weight:400;line-height:1.2;letter-spacing:-.015em;text-wrap:pretty}
+  .question .ans{display:grid;gap:8px;padding-top:16px;border-top:1px solid #E6E9F1;width:100%}
+  .question .ans p{font-size:17px;line-height:1.5;color:#2B3247;max-width:70ch}
+  .foot{position:relative;z-index:1;text-align:center;padding:10px 20px 40px;font-size:13px;color:rgba(255,255,255,.7)}
+
+  @media (max-width:1100px){
+    .hero-sticky{--ex:50%;--ey:38%}
+    .hero-copy{max-width:min(600px,80vw)}
+  }
+  @media (max-width:960px){
+    .carousel{height:470px}
+    .card{width:320px;height:410px;margin:-205px 0 0 -160px;padding:24px 24px 22px}
+    .ch-body{grid-template-columns:1fr}
+  }
+  @media (max-width:640px){
+    body{font-size:16px}
+    .top{padding:12px 16px}
+    .wordmark .s{font-size:28px}
+    .wordmark .l{font-size:16px}
+    .nav{display:none}
+    .hero{height:200vh}
+    .hero-sticky{--ex:50%;--ey:33%}
+    .hero-copy{max-width:none;right:20px;bottom:36px}
+    .hero-copy h1{font-size:clamp(34px,10vw,44px)}
+    .hero-copy p{font-size:14px;margin-top:12px}
+    .hero-mark,.scroll-hint{display:none}
+    .carousel{height:440px;perspective:1100px}
+    .card{width:280px;height:400px;margin:-200px 0 0 -140px}
+    .ch-head{grid-template-columns:1fr;gap:6px}
+    .ch-head .n{font-size:88px}
+    .map{grid-template-columns:1fr}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .cloud,.scroll-hint i{animation:none}
+    .card,.pill,.dot{transition:none}
+    html{scroll-behavior:auto}
+  }
+</style>
+
+<div class="world" aria-hidden="true">
+  <div class="sun"></div>
+  <div class="dusk"></div>
+  <div class="cloud" style="--w:46vw;--x:-12vw;--y:52%;--t:26s;--dl:0s"><i></i><i></i><i></i></div>
+  <div class="cloud" style="--w:34vw;--x:62vw;--y:18%;--t:31s;--dl:-9s"><i></i><i></i><i></i></div>
+  <div class="cloud" style="--w:28vw;--x:30vw;--y:78%;--t:22s;--dl:-4s"><i></i><i></i><i></i></div>
+  <div class="cloud" style="--w:22vw;--x:78vw;--y:66%;--t:28s;--dl:-14s"><i></i><i></i><i></i></div>
+  <div class="cloud" style="--w:18vw;--x:14vw;--y:8%;--t:35s;--dl:-20s"><i></i><i></i><i></i></div>
+</div>
+
+<header class="top">
+  <a class="wordmark" href="#inicio" aria-label="Cognición social, inicio"><span class="s">Cognición</span><span class="l">social</span></a>
+  <div class="actions">
+    <nav class="nav" aria-label="Partes de la exposición">
+      <a class="pill glass num" href="#p1" data-nav="p1" aria-label="Parte 1">1</a>
+      <a class="pill glass num" href="#p2" data-nav="p2" aria-label="Parte 2">2</a>
+      <a class="pill glass num" href="#p3" data-nav="p3" aria-label="Parte 3">3</a>
+      <a class="pill glass num" href="#p4" data-nav="p4" aria-label="Parte 4">4</a>
+      <a class="pill glass num" href="#p5" data-nav="p5" aria-label="Parte 5">5</a>
+      <a class="pill glass" href="#cierre" data-nav="cierre">Cierre</a>
+    </nav>
+    <button class="pill icon" id="fs" type="button" aria-label="Pantalla completa" title="Pantalla completa">⛶</button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="inicio" aria-label="Portada">
+  <div class="hero-sticky" id="heroS">
+    <div class="hero-ground"></div>
+    <div class="iris" aria-hidden="true"></div>
+    <div class="lid" aria-hidden="true"></div>
+    <div class="catch" aria-hidden="true"></div>
+    <div class="hero-copy">
+      <h1><span class="s">Leer</span> el mundo<br>que hay entre<br>las personas.</h1>
+      <p>La cognición social es el conocimiento y la comprensión de cómo funciona realmente el mundo social: entender las situaciones, saber cómo comportarnos en cada contexto y comprender las relaciones entre las personas.</p>
+    </div>
+    <div class="hero-mark">
+      <span class="s" aria-hidden="true">cs.</span>
+      <p>Cuarto aspecto de la conciencia social en el modelo de inteligencia social de Daniel Goleman.</p>
+    </div>
+    <div class="scroll-hint" aria-hidden="true"><span>desliza para entrar</span><i></i></div>
+  </div>
+</section>
+
+<!-- ================= RECORRIDO ================= -->
+<section class="section" id="recorrido" aria-labelledby="h-rec">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="h-rec">Cinco voces, <span class="s">una</span> idea.</h2>
+      <p>Cada integrante desarrolla una parte de la cognición social. Toca una carta para abrirla, o usa las flechas del teclado.</p>
+    </div>
+    <div class="carousel" id="carousel"></div>
+    <div class="car-nav">
+      <button class="pill" id="prev" type="button" aria-label="Parte anterior">‹</button>
+      <button class="pill" id="next" type="button" aria-label="Parte siguiente">›</button>
+    </div>
+    <div class="rail" id="rail"></div>
+    <p class="rail-hint">De la definición a la conclusión, en el orden en que se expone.</p>
+  </div>
+</section>
+
+<!-- ================= PARTE 1 ================= -->
+<section class="chapter" id="p1" aria-labelledby="h1p">
+  <div class="wrap">
+    <div class="ch-head">
+      <span class="n" aria-hidden="true">1</span>
+      <div><p class="who">Integrante 1</p><h2 id="h1p">¿Qué es la <span class="s">cognición</span> social?</h2></div>
+    </div>
+    <div class="ch-body">
+      <div class="panel">
+        <p class="key">El conocimiento y la comprensión de cómo funciona realmente el mundo social.</p>
+        <ul class="points">
+          <li>Es el <b>cuarto aspecto de la conciencia social</b>, junto a la empatía primordial, la sintonía y la exactitud empática.</li>
+          <li>Nos permite <b>entender las situaciones sociales</b>, saber cómo comportarnos en diferentes contextos y comprender las relaciones entre las personas.</li>
+          <li>Quien la desarrolla <b>reconoce las normas sociales</b> y se adapta a cada situación.</li>
+          <li>Nos deja <b>leer las señales</b> de una interacción, como identificar quién tiene mayor influencia dentro de un grupo.</li>
+        </ul>
+      </div>
+      <div class="sheet">
+        <p class="lbl">Ejemplo</p>
+        <p class="ex">No actuamos de la misma manera en una reunión con amigos, en una clase universitaria o en un restaurante.</p>
+        <p class="note">Cada contexto tiene sus propias normas, y la cognición social es lo que nos permite reconocerlas y ajustarnos sin que nadie nos las explique.</p>
+        <p class="close">Entender lo que sucede a nuestro alrededor cuando estamos con otras personas.</p>
+      </div>
+    </div>
+    <details class="script">
+      <summary>Guion completo de la integrante 1</summary>
+      <div class="txt">
+        <p>Buenos días. Hoy vamos a hablar sobre la cognición social, que es el cuarto aspecto de la conciencia social.</p>
+        <p>La cognición social consiste en el conocimiento y comprensión de cómo funciona realmente el mundo social. Es decir, nos permite entender las situaciones sociales, saber cómo comportarnos en diferentes contextos y comprender las relaciones entre las personas.</p>
+        <p>Una persona que desarrolla esta habilidad puede reconocer las normas sociales y adaptarse a diferentes situaciones. Por ejemplo, no actuamos de la misma manera cuando estamos en una reunión con amigos, en una clase universitaria o en un restaurante.</p>
+        <p>También podemos entender las señales que aparecen en las interacciones sociales. Por ejemplo, podemos identificar quién tiene mayor influencia dentro de un grupo.</p>
+        <p>Por eso, podemos decir que la cognición social nos ayuda a entender lo que sucede a nuestro alrededor cuando estamos con otras personas.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ================= PARTE 2 ================= -->
+<section class="chapter" id="p2" aria-labelledby="h2p">
+  <div class="wrap">
+    <div class="ch-head">
+      <span class="n" aria-hidden="true">2</span>
+      <div><p class="who">Integrante 2</p><h2 id="h2p">Semiótica y <span class="s">señales</span> sociales.</h2></div>
+    </div>
+    <div class="ch-body">
+      <div class="panel">
+        <p class="key">La semiótica es la capacidad de decodificar e interpretar las señales sociales.</p>
+        <ul class="points">
+          <li>Recibimos información de los demás constantemente: a veces en <b>palabras directas</b>, a veces en <b>señales que hay que interpretar dentro del contexto</b>.</li>
+          <li>Esta capacidad también nos permite comprender las <b>reglas tácitas</b>: normas que no están escritas, pero que aprendemos con la experiencia social.</li>
+          <li>Desde pequeños las aprendemos: en el colegio descubrimos <b>cómo hacer amigos, formar grupos y relacionarnos</b> con los compañeros.</li>
+          <li>En la adultez, ese mismo proceso nos permite comprender situaciones más complejas, como las <b>relaciones dentro de una organización</b>.</li>
+        </ul>
+      </div>
+      <div class="sheet">
+        <p class="lbl">Ejemplo</p>
+        <p class="ex">Observar cómo interactúan las personas de un grupo y reconocer quién tiene mayor influencia o autoridad.</p>
+        <p class="note">Nadie lo dice en voz alta. Se lee en quién habla primero, a quién miran los demás y quién cierra las decisiones.</p>
+        <p class="close">Las reglas que nadie escribe también se aprenden.</p>
+      </div>
+    </div>
+    <details class="script">
+      <summary>Guion completo de la integrante 2</summary>
+      <div class="txt">
+        <p>Un elemento importante de la cognición social es la semiótica, que se refiere a la capacidad de decodificar o interpretar las señales sociales.</p>
+        <p>En nuestra vida cotidiana estamos constantemente recibiendo información de otras personas. Algunas veces esa información se expresa directamente mediante palabras, pero también existen señales que debemos interpretar dentro del contexto.</p>
+        <p>Por ejemplo, podemos observar cómo interactúan las personas de un grupo y reconocer quién tiene mayor influencia o autoridad.</p>
+        <p>Esta capacidad también permite comprender las reglas tácitas, es decir, aquellas normas que no necesariamente están escritas, pero que aprendemos mediante nuestras experiencias sociales.</p>
+        <p>Desde pequeños aprendemos estas reglas. Por ejemplo, en el colegio aprendemos cómo hacer amigos, formar grupos y establecer relaciones con nuestros compañeros.</p>
+        <p>Estas experiencias forman parte del mismo proceso que, en la adultez, nos permite comprender situaciones sociales más complejas, como las relaciones dentro de una organización.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ================= PARTE 3 ================= -->
+<section class="chapter" id="p3" aria-labelledby="h3p">
+  <div class="wrap">
+    <div class="ch-head">
+      <span class="n" aria-hidden="true">3</span>
+      <div><p class="who">Integrante 3</p><h2 id="h3p">Cómo <span class="s">interpretamos</span> las situaciones sociales.</h2></div>
+    </div>
+    <div class="ch-body">
+      <div class="panel">
+        <p class="key">La cognición social nos ayuda a darle sentido y significado a los acontecimientos sociales.</p>
+        <ul class="points">
+          <li>Una misma situación puede ser <b>interpretada de maneras distintas</b> por distintas personas.</li>
+          <li>Cada persona interpreta desde sus propias <b>experiencias, creencias y conocimientos</b> sobre las normas sociales.</li>
+          <li>Para comprender correctamente una situación social hay que tener en cuenta el <b>contexto</b>.</li>
+          <li>Las reglas sociales <b>varían según el lugar y la cultura</b>: una conducta normal en una cultura puede leerse de otra manera en otra.</li>
+        </ul>
+      </div>
+      <div class="sheet">
+        <p class="lbl">Ejemplo</p>
+        <p class="ex">Un comentario que para una persona es una broma divertida, para otra puede resultar ofensivo.</p>
+        <p class="note">La frase es la misma. Lo que cambia es quién la escucha, qué ha vivido y qué normas conoce.</p>
+        <p class="close">Las relaciones humanas no funcionan igual en todos los contextos.</p>
+      </div>
+    </div>
+    <details class="script">
+      <summary>Guion completo de la integrante 3</summary>
+      <div class="txt">
+        <p>La cognición social también nos ayuda a darle sentido y significado a los acontecimientos sociales.</p>
+        <p>Esto es importante porque una misma situación puede ser interpretada de diferentes maneras por distintas personas.</p>
+        <p>Por ejemplo, un comentario que para una persona puede ser una broma divertida, para otra puede resultar ofensivo. La diferencia está en que cada persona interpreta la situación desde sus propias experiencias, creencias y conocimientos sobre las normas sociales.</p>
+        <p>Por eso, para comprender correctamente una situación social debemos tener en cuenta el contexto.</p>
+        <p>También influye lo que hemos aprendido sobre las reglas sociales. Estas reglas pueden variar dependiendo del lugar y de la cultura. Por ejemplo, una conducta considerada normal en una cultura puede ser interpretada de otra manera en una cultura diferente.</p>
+        <p>Entonces, la cognición social nos permite comprender que las relaciones humanas no funcionan de la misma manera en todos los contextos.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ================= PARTE 4 ================= -->
+<section class="chapter" id="p4" aria-labelledby="h4p">
+  <div class="wrap">
+    <div class="ch-head">
+      <span class="n" aria-hidden="true">4</span>
+      <div><p class="who">Integrante 4</p><h2 id="h4p">Cognición social en la vida <span class="s">cotidiana</span>.</h2></div>
+    </div>
+    <div class="ch-body">
+      <div class="panel">
+        <p class="key">Aparece cada vez que tenemos que entender cómo funcionan las relaciones en un entorno y actuar en él.</p>
+        <ul class="points">
+          <li>Cuando alguien se muda a una ciudad desconocida y necesita hacer nuevos amigos, debe <b>observar y comprender cómo funcionan las relaciones</b> en ese nuevo entorno.</li>
+          <li>También aparece al <b>organizar una reunión, trabajar en equipo o resolver un problema</b> con otras personas.</li>
+          <li>Para solucionar bien los problemas sociales hay que <b>detectar la información relevante y buscar con calma posibles soluciones</b>.</li>
+          <li>Cuando a una persona le cuesta encontrar esas soluciones de forma constante, sus relaciones se resienten. La lectura lo identifica como una <b>variable interviniente en trastornos como la depresión y la esquizofrenia</b>.</li>
+        </ul>
+      </div>
+      <div class="sheet">
+        <p class="lbl">Ejemplo</p>
+        <p class="ex">Llegar a una ciudad nueva y tener que descubrir, desde cero, cómo se hacen amigos allí.</p>
+        <p class="note">Las mismas habilidades que usamos para leer un grupo sirven para resolver los problemas que surgen dentro de él.</p>
+        <p class="close">No solo sirve para comprender a los demás: también para desenvolvernos en nuestras relaciones.</p>
+      </div>
+    </div>
+    <details class="script">
+      <summary>Guion completo de la integrante 4</summary>
+      <div class="txt">
+        <p>La cognición social aparece en una gran variedad de situaciones.</p>
+        <p>Por ejemplo, cuando una persona se muda a una ciudad desconocida y necesita hacer nuevos amigos, debe observar y comprender cómo funcionan las relaciones sociales en ese nuevo entorno.</p>
+        <p>También aparece cuando tenemos que organizar una reunión, trabajar en equipo o resolver un problema con otras personas.</p>
+        <p>Para solucionar adecuadamente los problemas sociales es importante detectar la información relevante y buscar tranquilamente posibles soluciones.</p>
+        <p>Cuando una persona tiene dificultades constantes para encontrar soluciones a los problemas sociales, esto puede afectar sus relaciones con los demás. La lectura también señala que esta dificultad ha sido identificada como una variable interviniente en diferentes trastornos psicológicos, entre ellos la depresión y la esquizofrenia.</p>
+        <p>Por eso, la cognición social no solamente tiene importancia para comprender a los demás, sino también para desenvolvernos adecuadamente en nuestras relaciones interpersonales.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ================= PARTE 5 ================= -->
+<section class="chapter" id="p5" aria-labelledby="h5p">
+  <div class="wrap">
+    <div class="ch-head">
+      <span class="n" aria-hidden="true">5</span>
+      <div><p class="who">Integrante 5</p><h2 id="h5p">Cognición social e <span class="s">inteligencia</span> social.</h2></div>
+    </div>
+    <div class="ch-body">
+      <div class="panel">
+        <p class="key">Saber mucho sobre las situaciones sociales no significa necesariamente saber relacionarse bien con los demás.</p>
+        <ul class="points">
+          <li>La cognición social ha sido durante mucho tiempo una <b>parte fundamental de la inteligencia social</b>. Algunos teóricos la consideran la inteligencia aplicada al mundo social, e incluso una medida de la inteligencia social.</li>
+          <li>Pero una persona puede <b>comprender perfectamente lo que ocurre en un grupo</b> y aun así tener dificultades para interactuar con las personas.</li>
+          <li>Por eso las habilidades se combinan: la <b>exactitud empática se construye sobre la escucha y la empatía primordial</b>, y todas contribuyen a la cognición social.</li>
+        </ul>
+        <p class="map-root"><span class="s">Inteligencia social</span><br>se compone de</p>
+        <div class="map">
+          <div class="branch"><b>Conciencia social</b><span>Empatía primordial</span><span>Sintonía</span><span>Exactitud empática</span><span class="me">Cognición social</span></div>
+          <div class="branch"><b>Aptitud social</b><span>Sincronía</span><span>Presentación de uno mismo</span><span>Influencia</span><span>Interés por los demás</span></div>
+        </div>
+      </div>
+      <div class="sheet">
+        <p class="lbl">Conclusión</p>
+        <p class="ex">La cognición social es la capacidad de comprender cómo funciona el mundo social, interpretar las señales de los demás y entender las normas y reglas que influyen en nuestras relaciones.</p>
+        <p class="note">Nos ayuda a adaptarnos a diferentes situaciones, comprender distintos puntos de vista y encontrar soluciones a los problemas sociales. Y no funciona de manera aislada: se relaciona con la escucha, la empatía y las aptitudes sociales.</p>
+        <p class="close">No basta con saber interpretar el mundo social; también necesitamos saber cómo relacionarnos dentro de él.</p>
+      </div>
+    </div>
+    <details class="script">
+      <summary>Guion completo de la integrante 5</summary>
+      <div class="txt">
+        <p>La cognición social ha sido durante mucho tiempo una parte fundamental de la inteligencia social. Algunos teóricos incluso consideran que la cognición social, entendida como la inteligencia aplicada al mundo social, podría ser una medida de la inteligencia social.</p>
+        <p>Sin embargo, la lectura plantea una diferencia importante: saber mucho sobre las situaciones sociales no significa necesariamente saber relacionarse bien con los demás. Una persona puede comprender perfectamente lo que está ocurriendo en un grupo, pero tener dificultades para interactuar con las personas.</p>
+        <p>Por eso, las diferentes habilidades de la inteligencia social necesitan combinarse. La lectura explica que la exactitud empática se construye sobre la escucha y la empatía primordial, y que todas estas habilidades contribuyen a la cognición social.</p>
+        <p>En conclusión, la cognición social es la capacidad de comprender cómo funciona el mundo social, interpretar las señales de los demás y entender las normas y reglas que influyen en nuestras relaciones. Nos ayuda a adaptarnos a diferentes situaciones, comprender distintos puntos de vista y encontrar soluciones a los problemas sociales.</p>
+        <p>Además, no funciona de manera aislada. Se relaciona con otras habilidades como la escucha, la empatía y las aptitudes sociales. Por eso, para desenvolvernos adecuadamente con otras personas no basta con saber interpretar el mundo social; también necesitamos saber cómo relacionarnos dentro de él.</p>
+        <p>Muchas gracias.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ================= CIERRE ================= -->
+<section class="section" id="cierre" aria-labelledby="h-cierre">
+  <div class="wrap">
+    <div class="statement">
+      <p>Leer el mundo social es el primer paso.</p>
+      <p>Saber <span class="s">relacionarnos</span> dentro de él es el segundo.</p>
+    </div>
+    <div class="question">
+      <div class="sheet">
+        <p class="lbl">Pregunta para el salón</p>
+        <h2 class="q" id="h-cierre">Si una persona hace un comentario pensando que es una broma, pero otra persona se siente ofendida, ¿por qué creen que ocurrió esto?</h2>
+        <button class="btn" id="show-ans" type="button">Mostrar la explicación</button>
+        <div class="ans" id="ans" hidden>
+          <p>Esto demuestra la cognición social: cada persona puede interpretar una misma situación de manera diferente dependiendo de sus experiencias, sus creencias, el contexto y su conocimiento de las normas sociales.</p>
+          <p>Conecta directamente con la parte de la lectura sobre las bromas, las interpretaciones y el contexto social.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<p class="foot">Exposición sobre la cognición social, cuarto aspecto de la conciencia social en el modelo de inteligencia social de Daniel Goleman.</p>
+
+<script>
+(function(){
+  'use strict';
+  const $ = (s, r) => (r || document).querySelector(s);
+  const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+  const reduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const esc = s => String(s).replace(/[&<>"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[ch]));
+
+  const PARTS = [
+    { id:'p1', who:'Integrante 1', title:'¿Qué es la cognición social?', key:'El conocimiento y la comprensión de cómo funciona realmente el mundo social: entender las situaciones, saber cómo comportarnos y comprender las relaciones entre las personas.' },
+    { id:'p2', who:'Integrante 2', title:'Semiótica y señales sociales', key:'Decodificar las señales que no se dicen con palabras y comprender las reglas tácitas que aprendemos desde pequeños.' },
+    { id:'p3', who:'Integrante 3', title:'Cómo interpretamos las situaciones sociales', key:'Una misma situación se interpreta de maneras distintas según la experiencia, las creencias, el contexto y la cultura.' },
+    { id:'p4', who:'Integrante 4', title:'Cognición social en la vida cotidiana', key:'Mudarse, trabajar en equipo, resolver un problema con otros: detectar la información relevante y buscar soluciones con calma.' },
+    { id:'p5', who:'Integrante 5', title:'Cognición social e inteligencia social', key:'Saber mucho sobre el mundo social no basta: las habilidades se combinan, y hay que saber relacionarse dentro de él.' }
+  ];
+
+  /* ---------- world color ---------- */
+  const root = document.documentElement;
+  function setWorld(warm, dusk){ root.style.setProperty('--warm', String(warm)); root.style.setProperty('--dusk', String(dusk)); }
+  const WORLD = { inicio:[0,0], recorrido:[0,0], p1:[0,0], p2:[0,0], p3:[0,0], p4:[1,0], p5:[0,1], cierre:[0,1] };
+
+  /* ---------- hero scroll ---------- */
+  const hero = $('#inicio'), heroS = $('#heroS');
+  let ticking = false;
+  function paintHero(){
+    ticking = false;
+    const vh = window.innerHeight, vw = window.innerWidth;
+    const max = Math.max(1, hero.offsetHeight - vh);
+    const p = Math.min(1, Math.max(0, window.scrollY / max));
+    const e = p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+    const vmin = Math.min(vw, vh), vmax = Math.max(vw, vh);
+    const rMin = vmin * (vw < 640 ? .2 : .17), rMax = vmax * .82;
+    const r = rMin + (rMax - rMin) * e;
+    heroS.style.setProperty('--r', r.toFixed(1) + 'px');
+    heroS.style.setProperty('--iris', (r * 2 * 1.345).toFixed(1) + 'px');
+    heroS.style.setProperty('--copy', Math.max(0, 1 - p * 2.4).toFixed(3));
+    heroS.style.setProperty('--catch', Math.max(0, 1 - p * 3.2).toFixed(3));
+    heroS.style.setProperty('--irisop', Math.max(0, Math.min(1, 1 - (p - .55) / .3)).toFixed(3));
+  }
+  function onScroll(){ if (!ticking){ ticking = true; requestAnimationFrame(paintHero); } }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  window.addEventListener('resize', onScroll);
+  paintHero();
+
+  /* ---------- section tracking: nav + world ---------- */
+  let section = 'inicio';
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting) { section = en.target.id; applySection(); } });
+  }, { threshold: .3 });
+  Object.keys(WORLD).forEach(id => io.observe($('#' + id)));
+  function applySection(){
+    $$('[data-nav]').forEach(a => a.classList.toggle('is-active', a.dataset.nav === section));
+    const w = WORLD[section] || [0,0];
+    setWorld(w[0], w[1]);
+  }
+
+  /* ---------- fullscreen ---------- */
+  const fsBtn = $('#fs');
+  if (!document.documentElement.requestFullscreen) fsBtn.hidden = true;
+  fsBtn.addEventListener('click', () => {
+    if (document.fullscreenElement) { document.exitFullscreen().catch(() => {}); return; }
+    document.documentElement.requestFullscreen().catch(() => { fsBtn.title = 'Usa F11 para pantalla completa'; });
+  });
+
+  /* ---------- carousel ---------- */
+  let active = 0;
+  const car = $('#carousel');
+  car.innerHTML = PARTS.map((c, i) => `
+    <article class="card" data-i="${i}" tabindex="0" role="button" aria-label="${esc(c.who)}: ${esc(c.title)}">
+      <span class="who">${esc(c.who)}</span>
+      <span class="n" aria-hidden="true">${i + 1}</span>
+      <h3>${esc(c.title)}</h3>
+      <div class="body">
+        <p>${esc(c.key)}</p>
+        <a class="btn" href="#${c.id}">Ir a esta parte</a>
+      </div>
+    </article>`).join('');
+  const cards = $$('.card', car);
+  $('#rail').innerHTML = PARTS.map((c, i) => `<button class="dot" type="button" data-i="${i}" aria-label="${esc(c.title)}"></button>`).join('');
+  const dots = $$('.dot');
+  function layout(){
+    const narrow = window.innerWidth < 640, mid = window.innerWidth < 960;
+    const step = narrow ? 200 : mid ? 250 : 310;
+    cards.forEach((c, i) => {
+      const d = i - active, ad = Math.abs(d);
+      c.classList.toggle('is-active', d === 0);
+      c.classList.toggle('is-far', ad > 3);
+      c.style.zIndex = String(10 - ad);
+      c.style.transform = `rotateY(${d * 14}deg) translateX(${d * step}px) translateZ(${-ad * 90}px) translateY(${ad * -10}px) scale(${d === 0 ? 1 : .94})`;
+      c.setAttribute('aria-pressed', d === 0 ? 'true' : 'false');
+    });
+    dots.forEach(dt => dt.classList.toggle('is-on', Number(dt.dataset.i) === active));
+  }
+  function go(i){ active = (i + PARTS.length) % PARTS.length; layout(); }
+  cards.forEach(c => {
+    c.addEventListener('click', e => { if (e.target.closest('a')) return; go(Number(c.dataset.i)); });
+    c.addEventListener('keydown', e => { if (e.target !== c) return; if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(Number(c.dataset.i)); } });
+  });
+  dots.forEach(dt => dt.addEventListener('click', () => go(Number(dt.dataset.i))));
+  $('#prev').addEventListener('click', () => go(active - 1));
+  $('#next').addEventListener('click', () => go(active + 1));
+  let tx = null, ty = null;
+  car.addEventListener('touchstart', e => { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive:true });
+  car.addEventListener('touchend', e => {
+    if (tx === null) return;
+    const dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty; tx = ty = null;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) go(active + (dx < 0 ? 1 : -1));
+  }, { passive:true });
+  window.addEventListener('resize', layout);
+  layout();
+
+  document.addEventListener('keydown', e => {
+    if (e.target.matches('input,textarea') || e.altKey || e.ctrlKey || e.metaKey) return;
+    if (section !== 'recorrido') return;
+    if (e.key === 'ArrowRight'){ e.preventDefault(); go(active + 1); }
+    else if (e.key === 'ArrowLeft'){ e.preventDefault(); go(active - 1); }
+  });
+
+  /* ---------- closing question ---------- */
+  $('#show-ans').addEventListener('click', () => {
+    const a = $('#ans'), b = $('#show-ans');
+    a.hidden = !a.hidden;
+    b.textContent = a.hidden ? 'Mostrar la explicación' : 'Ocultar la explicación';
+  });
+})();
+</script>
+</body>
+</html>
