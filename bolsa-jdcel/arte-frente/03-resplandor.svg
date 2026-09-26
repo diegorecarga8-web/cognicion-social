@@ -13,7 +13,7 @@
 <circle cx="250" cy="248" r="76" fill="none" stroke="#111111" stroke-width="1.4"/>
 <g font-family="Playfair Display" font-weight="900" font-size="110" text-anchor="middle">
   <text x="236.8" y="260.1" fill="#111111">J</text>
-  <text x="269.8" y="282.1" fill="#111111" stroke="#f6f6f4" stroke-width="4.95" stroke-linejoin="round" paint-order="stroke">J</text>
+  <text x="269.8" y="282.1" fill="#111111" stroke="#ffffff" stroke-width="4.95" stroke-linejoin="round" paint-order="stroke">J</text>
 </g>
 <text x="250" y="472" font-family="Archivo" font-weight="900" style="font-stretch:125%" font-size="48" fill="#111111" text-anchor="middle">JDCEL</text>
 <text x="250" y="507" font-family="Playball" font-size="36" fill="#111111" text-anchor="middle">Bq</text>

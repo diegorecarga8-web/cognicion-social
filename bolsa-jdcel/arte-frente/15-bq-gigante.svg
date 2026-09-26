@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600" width="250mm" height="300mm">
+<!-- JDCEL Bq · Bq gigante · frente 25 x 30 cm (1 unidad = 0,5 mm). Los 3,6 cm superiores (y < 72) son la boca que se dobla hacia adentro. Monograma JJ aproximado: reemplazar por el vector original. -->
+<style>@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Playfair+Display:wght@900&amp;family=Playball&amp;family=EB+Garamond:ital,wght@0,400;1,400&amp;display=swap');</style>
+<defs>
+  <linearGradient id="gloss" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="500" y2="600"><stop offset="0" stop-color="#424242"/><stop offset=".45" stop-color="#2b2b2b"/><stop offset="1" stop-color="#222222"/></linearGradient>
+  <filter id="emboss" x="-8%" y="-8%" width="116%" height="116%"><feGaussianBlur in="SourceAlpha" stdDeviation="1.4" result="b"/><feOffset in="b" dx="2" dy="2.4" result="bo"/><feFlood flood-color="#000" flood-opacity=".34"/><feComposite in2="bo" operator="in" result="sh"/><feOffset in="b" dx="-1.6" dy="-1.8" result="ho"/><feFlood flood-color="#fff" flood-opacity="1"/><feComposite in2="ho" operator="in" result="hl"/><feMerge><feMergeNode in="sh"/><feMergeNode in="hl"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <clipPath id="cL"><rect x="0" y="0" width="250" height="600"/></clipPath>
+  <clipPath id="cR"><rect x="250" y="0" width="250" height="600"/></clipPath>
+  
+</defs>
+<rect width="500" height="600" fill="#161616"/>
+<text x="-40" y="345" font-family="Playball" font-size="560" fill="#f4f4f2">Bq</text><text x="226" y="508" font-family="Archivo" font-weight="900" style="font-stretch:125%" font-size="40" fill="#f4f4f2" text-anchor="middle">JDCEL</text><text x="331" y="511" font-family="Playball" font-size="30" fill="#f4f4f2" text-anchor="start">Bq</text>
+<text x="252" y="538" font-family="Archivo" font-weight="700" font-size="10.5" letter-spacing="3.4" fill="#f4f4f2" text-anchor="middle" style="font-stretch:110%">BENDECIDOS PARA BENDECIR</text>
+</svg>

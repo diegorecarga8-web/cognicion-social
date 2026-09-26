@@ -31,6 +31,22 @@ Propuestas de bolsa para **JDCEL Bq** (celulares) en negro y blanco. Todas manti
 
 Los textos entre corchetes (`[tu número]`, `[@tu_usuario]`, `[dirección del local]`) y el «¡Gracias por tu compra!» son de ejemplo. El QR de los bocetos es de relleno: hay que generar el real (por ejemplo, un enlace `wa.me` al número de la tienda).
 
+## Ronda 2 · a partir de la referencia del cliente
+
+![Ronda 2](mockups/ideas-bolsa-ronda-2.jpg)
+
+De la bolsa de referencia se toma la estructura, no el dibujo: el símbolo de la marca en gigante y recortado por los bordes, dos colores (aquí negro y blanco) y el logo pequeño abajo, con aire. La «S» de la referencia es de otra marca, así que no se copia. Las bolsas se muestran colgando sobre fondo gris, como en la foto de referencia.
+
+| # | Nombre | Bolsa | Idea | Impresión |
+|---|---|---|---|---|
+| 11 | Monograma gigante | Blanca, cordón blanco | El JJ en gigante, recortado por arriba. | 1 tinta negra |
+| 12 | JJ en cinta | Blanca, cordón blanco | Las J del logo como cintas gruesas, una dentro de la otra. | 1 tinta negra |
+| 13 | Cruz en franjas | Blanca, cordón blanco | Franjas de lado a lado que forman una cruz latina y bajan en curvas en U. | 1 tinta negra |
+| 14 | Señal | Negra, cordón negro | La señal de wifi en gigante: celulares y bendición que se comparte. | Blanco (serigrafía o hot stamping) |
+| 15 | Bq gigante | Negra, cordón negro | La «Bq» del logo en caligrafía gigante, recortada por los bordes. | Blanco (serigrafía o hot stamping) |
+
+Presentación: `JDCEL-propuestas-bolsa-ronda-2.pptx`. Para Canva: `canva/JDCEL-bolsas-ronda-2.pptx` (las cinco) o cada una por separado (`canva/11-…` a `canva/15-…`).
+
 ## Producción
 
 - **Tamaños:** mediana 25 × 30 × 10 cm (celular en su caja + accesorios); pequeña 18 × 22 × 8 cm (accesorios).
@@ -43,7 +59,7 @@ Los textos entre corchetes (`[tu número]`, `[@tu_usuario]`, `[dirección del lo
 La carpeta `canva/` tiene cada frente armado por piezas para que Canva lo convierta en un diseño editable:
 
 1. En [canva.com](https://www.canva.com), desde el computador: **Crear un diseño → Importar archivo** y elige un `.pptx` (o arrástralo a la ventana).
-2. `JDCEL-bolsas-9-disenos.pptx` trae las nueve bolsas, una por página; `01-corona.pptx` … `09-reverso.pptx` traen cada una por separado. Cada página mide 25 × 30 cm.
+2. `JDCEL-bolsas-9-disenos.pptx` trae las nueve bolsas de la ronda 1, una por página, y `JDCEL-bolsas-ronda-2.pptx` las cinco de la ronda 2; `01-corona.pptx` … `15-bq-gigante.pptx` traen cada una por separado. Cada página mide 25 × 30 cm.
 3. Los textos se editan como texto; las formas y los gráficos se mueven y cambian de color; el logo (JJ, JDCEL, Bq) va como gráfico para reemplazarlo por el original.
 
 Si Canva importa algo raro, `canva/pdf/` tiene los mismos diseños en PDF (Canva también los vuelve editables). Con Canva Pro se pueden subir sueltos los SVG de `canva/elementos/`. Más detalles en `canva/LEEME.txt`.
@@ -51,6 +67,7 @@ Si Canva importa algo raro, `canva/pdf/` tiene los mismos diseños en PDF (Canva
 ## Archivos
 
 - `JDCEL-propuestas-bolsa.pptx`: presentación con las bolsas montadas (portada, las diez de un vistazo, una diapositiva por propuesta con su arte del frente, tabla comparativa y cómo producirla). Las notas del orador explican cada idea.
+- `JDCEL-propuestas-bolsa-ronda-2.pptx`: presentación de la ronda 2 (portada, qué se tomó de la referencia, las cinco de un vistazo, una diapositiva por propuesta y cómo producirla).
 - `mockups/`: imágenes JPG de cada bolsa (1800 × 2000 px) y la lámina con todas.
 - `arte-frente/`: el frente de cada propuesta en SVG editable (25 × 30 cm). Se abre en Illustrator, Figma o Inkscape; instala las fuentes o conviértelas en contornos.
 - `canva/`: los mismos frentes listos para importar en Canva (`.pptx`, `.pdf` y gráficos sueltos en SVG).
@@ -60,8 +77,8 @@ Si Canva importa algo raro, `canva/pdf/` tiene los mismos diseños en PDF (Canva
   cd bolsa-jdcel/fuente
   sh fetch-fonts.sh   # descarga las fuentes a fonts/
   node build.mjs      # genera out/*.jpg y out/svg/*.svg
-  node overview.mjs   # genera out/overview.jpg con todas
+  node overview.mjs   # lámina de la ronda 1 (node overview.mjs ronda-2 para la ronda 2)
   pip install python-pptx fonttools brotli uharfbuzz pyclipper svgelements
   python3 canva.py    # regenera la carpeta canva/ (los PDF necesitan LibreOffice Impress)
-  npm install && node presentacion.mjs   # regenera JDCEL-propuestas-bolsa.pptx
+  npm install && node presentacion.mjs   # regenera las dos presentaciones
   ```

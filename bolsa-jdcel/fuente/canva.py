@@ -247,10 +247,10 @@ def grow(polys, delta):
     return _fp(pco.Execute(delta * SC))
 
 
-def stroke(lines, width, closed=True):
+def stroke(lines, width, closed=True, round_ends=False):
     """Convierte un trazo en figura rellena (Canva no acepta trazos en SVG)."""
     pco = pyclipper.PyclipperOffset(2.0, 5.0)
-    et = pyclipper.ET_CLOSEDLINE if closed else pyclipper.ET_OPENBUTT
+    et = pyclipper.ET_CLOSEDLINE if closed else (pyclipper.ET_OPENROUND if round_ends else pyclipper.ET_OPENBUTT)
     for ln in lines:
         pco.AddPath([(round(x * SC), round(y * SC)) for x, y in ln], pyclipper.JT_ROUND, et)
     return _fp(pco.Execute(width / 2 * SC))
@@ -469,8 +469,8 @@ def script(name, x, y, s, color, anchor='middle', export=None):
     return G(name, [(color, d, p)], export)
 
 
-def run(text, spec, size, color):
-    return dict(text=text, size=size, color=color, **spec)
+def run(text, spec, size, color, ls=0):
+    return dict(text=text, size=size, color=color, ls=ls, **spec)
 
 
 def T(name, runs, x, y, anchor='middle'):
@@ -631,6 +631,53 @@ def designs():
         G('Código QR (de ejemplo)', [(INK, qr(196, 374, 108, 5))], 'qr-de-ejemplo'),
         T('Texto del QR', [run('escanéalo y escríbenos por WhatsApp', N_SERIF, 15, INK)], 250, 506),
         T('Eslogan', [run(SLOGAN, N_SERIF_IT, 21, INK)], 250, 566),
+    ]))
+    # ---- ronda 2: a partir de la referencia del cliente (símbolo gigante recortado y logo abajo)
+    def page(polys, bleed=6):
+        return inter(polys, [rect(-bleed, -bleed, 500 + 2 * bleed, 600 + 2 * bleed)])
+
+    def lockup(color):
+        return [word('Logo · JDCEL', 226, 508, 40, color), script('Logo · Bq', 331, 511, 30, color, 'start'),
+                T('Eslogan', [run('BENDECIDOS PARA BENDECIR', N_SANS_B, 10.5, color, ls=3.4)], 252, 538)]
+
+    out.append(dict(id='11-monograma-gigante', title='11 · Monograma gigante', round=2, bg=WHITE, notes=(
+        'El monograma de la marca en gigante y recortado por los bordes, como el símbolo de la referencia. '
+        'Una tinta negra; cordón blanco.'), elements=[
+        G('Monograma gigante (recortado)', [(INK, page(monogram(250, 170, 510)[1]))], 'monograma-gigante'),
+        *lockup(INK),
+    ]))
+
+    rib = lambda r: path_polys(f'M{210 + r} -40V196A{r} {r} 0 0 1 {210 - r} 196', steps=64)  # noqa: E731
+    out.append(dict(id='12-jj-en-cinta', title='12 · JJ en cinta', round=2, bg=WHITE, notes=(
+        'La J del logo dibujada como una cinta gruesa, dos veces y una dentro de la otra, con curvas como las de la '
+        'referencia. Una tinta negra; cordón blanco.'), elements=[
+        G('JJ en cinta', [(INK, page(union(stroke(rib(100), 64, closed=False) + stroke(rib(218), 64, closed=False))))], 'jj-en-cinta'),
+        *lockup(INK),
+    ]))
+
+    cross_lines = [[(250, -260), (250, 330)], [(-200, 118), (700, 118)]]
+    fat = lambda w: stroke(cross_lines, w, closed=False, round_ends=True)  # noqa: E731
+    out.append(dict(id='13-cruz-en-franjas', title='13 · Cruz en franjas', round=2, bg=WHITE, notes=(
+        'Una cruz latina hecha de franjas: las líneas corren de lado a lado y bajan formando curvas en U. '
+        'Una tinta negra; cordón blanco.'), elements=[
+        G('Cruz en franjas', [(INK, page(union(minus(fat(240), fat(168)) + minus(fat(96), fat(32)))))], 'cruz-en-franjas'),
+        *lockup(INK),
+    ]))
+
+    a = math.radians(50)
+    arcs = [[(250 + r * math.sin(t), 430 - r * math.cos(t)) for t in (-a + 2 * a * i / 80 for i in range(81))]
+            for r in (82 + k * 62 for k in range(7))]
+    out.append(dict(id='14-senal', title='14 · Señal', round=2, bg=INK, notes=(
+        'La señal de wifi en gigante, en blanco sobre la bolsa negra: dice «celulares» y también una bendición que '
+        'se comparte. Blanco sobre cartulina negra; cordón negro.'), elements=[
+        G('Señal (wifi)', [(WHITE, page(union(stroke(arcs, 34, closed=False, round_ends=True) + [circle(250, 424, 24)])))], 'senal-wifi'),
+        *lockup(WHITE),
+    ]))
+
+    out.append(dict(id='15-bq-gigante', title='15 · Bq gigante', round=2, bg=INK, notes=(
+        'La «Bq» del logo en caligrafía gigante, recortada por los bordes. Blanco sobre cartulina negra; cordón negro.'), elements=[
+        G('Bq gigante (recortada)', [(WHITE, page(outline([dict(SCRIPT, size=560, text='Bq')], -40, 345)[1]))], 'bq-gigante'),
+        *lockup(WHITE),
     ]))
     return out
 
@@ -800,7 +847,7 @@ def add_element(slide, shapes, el):
         ext = font.get_font_extents('ltr')
         asc, desc = ext.ascender / upem, -ext.descender / upem
         size = max(r['size'] for r in runs)
-        width = sum(advance([dict(r['m'], size=r['size'], text=r['text'])]) for r in runs) + 40
+        width = sum(advance([dict(r['m'], size=r['size'], text=r['text'], ls=r.get('ls', 0))]) for r in runs) + 40
         left = el['x'] - {'start': 0, 'middle': width / 2, 'end': width}[el['anchor']]
         tb = shapes.add_textbox(emu(left), emu(el['y'] - asc * first['size']), emu(width), emu(size * (asc + desc) * 1.1))
         tb.name = el['name']
@@ -820,6 +867,8 @@ def add_element(slide, shapes, el):
             rn.font.bold = r.get('bold', False)
             rn.font.italic = r.get('italic', False)
             rn.font.color.rgb = rgb(r['color'])
+            if r.get('ls'):
+                rn.font._rPr.set('spc', str(round(r['ls'] * PT_PER_UNIT * 100)))
 
 
 def build_pptx(selected, path):
@@ -891,7 +940,8 @@ def main():
     export_elements(all_designs, os.path.join(OUT, 'elementos'))
     for dsg in all_designs:
         build_pptx([dsg], os.path.join(OUT, f"{dsg['id']}.pptx"))
-    build_pptx(all_designs, os.path.join(OUT, 'JDCEL-bolsas-9-disenos.pptx'))
+    build_pptx([d for d in all_designs if d.get('round') != 2], os.path.join(OUT, 'JDCEL-bolsas-9-disenos.pptx'))
+    build_pptx([d for d in all_designs if d.get('round') == 2], os.path.join(OUT, 'JDCEL-bolsas-ronda-2.pptx'))
     pdf_copies(OUT)
     shutil.rmtree(TMP)
     print('listo:', OUT)

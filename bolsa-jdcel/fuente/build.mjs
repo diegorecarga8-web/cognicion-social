@@ -253,6 +253,76 @@ ${rope(frontRope, cord)}
 </svg>`;
 }
 
+
+// Escena de la ronda 2: la bolsa de frente, sostenida desde arriba, sobre fondo gris (como la referencia).
+const SH = { W: 900, H: 1000, fx: 200, fy: 318, fw: 500, fh: 600 };
+
+function sceneHang({ theme = 'white', front = '', cord = 'black', defs = '' }) {
+  const white = theme === 'white';
+  const { fx, fy, fw, fh } = SH;
+  const ex1 = fx + 160;
+  const ex2 = fx + 340;
+  const ey = fy + 34;
+  const hx = fx + fw / 2 + 6;
+  const hy = -60;
+  const strand = (x0, y0, x1) => `M${x0} ${y0}C${f(x0 + (x1 - x0) * 0.15)} ${y0 - 150} ${f(x1 + (x0 - x1) * 0.1)} ${hy + 130} ${x1} ${hy}`;
+  const back = strand(ex1 + 24, fy + 6, hx - 3) + strand(ex2 - 24, fy + 6, hx + 3);
+  const frontCord = strand(ex1, ey, hx - 8) + strand(ex2, ey, hx + 8);
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${SH.W} ${SH.H}" width="${SH.W}" height="${SH.H}">
+<defs>
+  <radialGradient id="wall" cx="60%" cy="36%" r="85%">
+    <stop offset="0" stop-color="#a3a3a3"/><stop offset=".5" stop-color="#727272"/><stop offset="1" stop-color="#3b3b3b"/>
+  </radialGradient>
+  <linearGradient id="lightH" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#000" stop-opacity="${white ? 0.08 : 0.3}"/><stop offset=".2" stop-color="#fff" stop-opacity="${white ? 0.1 : 0.05}"/>
+    <stop offset=".6" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity="${white ? 0.12 : 0.35}"/>
+  </linearGradient>
+  <linearGradient id="lightV" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#fff" stop-opacity="${white ? 0.12 : 0.06}"/><stop offset=".7" stop-color="#000" stop-opacity="0"/>
+    <stop offset="1" stop-color="#000" stop-opacity="${white ? 0.07 : 0.22}"/>
+  </linearGradient>
+  <radialGradient id="metal" cx="35%" cy="30%" r="80%">
+    <stop offset="0" stop-color="#ffffff"/><stop offset=".45" stop-color="#bdbdbd"/><stop offset="1" stop-color="#6d6d6d"/>
+  </radialGradient>
+  <radialGradient id="metalDark" cx="35%" cy="30%" r="80%">
+    <stop offset="0" stop-color="#8a8a8a"/><stop offset=".5" stop-color="#3b3b3b"/><stop offset="1" stop-color="#151515"/>
+  </radialGradient>
+  <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3"/></filter>
+  <filter id="drop" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="18"/></filter>
+  <filter id="blur2" x="-10%" y="-50%" width="120%" height="200%"><feGaussianBlur stdDeviation="2.5"/></filter>
+  <filter id="noise" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  ${white ? 0.07 : 0.14} 0 0 0 0"/>
+  </filter>
+  <clipPath id="frontClip"><rect x="0" y="0" width="${fw}" height="${fh}"/></clipPath>
+  ${defs}
+</defs>
+<rect width="${SH.W}" height="${SH.H}" fill="url(#wall)"/>
+<rect x="${fx + 28}" y="${fy + 36}" width="${fw}" height="${fh}" fill="#000" opacity=".4" filter="url(#drop)"/>
+${rope(back, cord)}
+<g transform="translate(${fx} ${fy})">
+  <rect width="${fw}" height="${fh}" fill="${white ? WHITE : BLACK}"/>
+  <g clip-path="url(#frontClip)">${front}</g>
+  <rect width="${fw}" height="${fh}" fill="url(#lightH)"/>
+  <rect width="${fw}" height="${fh}" fill="url(#lightV)"/>
+  <rect width="${fw}" height="${fh}" filter="url(#noise)"/>
+  <line x1="0" x2="${fw}" y1="72" y2="72" stroke="#000" stroke-opacity="${white ? 0.07 : 0.55}" stroke-width="1.2"/>
+  <line x1="0" x2="${fw}" y1="73.6" y2="73.6" stroke="#fff" stroke-opacity="${white ? 0.9 : 0.07}" stroke-width="1"/>
+  <rect x="0" y="${fh - 50}" width="${fw}" height="10" fill="#000" opacity="${white ? 0.035 : 0.25}" filter="url(#blur2)"/>
+  <line x1="0" x2="${fw}" y1="${fh - 42}" y2="${fh - 42}" stroke="#fff" stroke-opacity="${white ? 0.6 : 0.05}" stroke-width="1"/>
+  <line x1=".8" x2=".8" y1="0" y2="${fh}" stroke="#fff" stroke-opacity="${white ? 0.9 : 0.12}" stroke-width="1.6"/>
+  <line x1="${fw - 0.8}" x2="${fw - 0.8}" y1="0" y2="${fh}" stroke="#000" stroke-opacity="${white ? 0.18 : 0.5}" stroke-width="1.6"/>
+  ${eyelet(160, 34, !white)}
+  ${eyelet(340, 34, !white)}
+</g>
+${rope(frontCord, cord)}
+</svg>`;
+}
+
+// Logo abajo, como en la referencia: JDCEL Bq en una línea y el eslogan espaciado debajo.
+const lockup = (c, y = 508) => `${wordmark(226, y, 40, c)}${bq(331, y + 3, 30, c, 'start')}
+<text x="252" y="${y + 30}" font-family="Archivo" font-weight="700" font-size="10.5" letter-spacing="3.4" fill="${c}" text-anchor="middle" style="font-stretch:110%">BENDECIDOS PARA BENDECIR</text>`;
+
 // ---------------------------------------------------------------- concepts
 const concepts = [];
 const add = (id, title, fn) => concepts.push({ id, title, ...fn() });
@@ -470,6 +540,52 @@ add('10-monograma-claro', 'Monograma claro', () => ({
   gusset: pattern(200, 600, -20, 10, '#CBCBCB', '#E7E7E4'),
 }));
 
+
+// ---------------------------------------------------------------- ronda 2 (a partir de la referencia del cliente)
+add('11-monograma-gigante', 'Monograma gigante', () => ({
+  theme: 'white', scene: 'hang', cord: 'white',
+  front: `${monogram(250, 170, 510, INK, WHITE)}${lockup(INK)}`,
+}));
+
+add('12-jj-en-cinta', 'JJ en cinta', () => {
+  const cxh = 210;
+  const cyh = 196;
+  const rib = (r) => `M${cxh + r} -40V${cyh}A${r} ${r} 0 0 1 ${cxh - r} ${cyh}`;
+  return {
+    theme: 'white', scene: 'hang', cord: 'white',
+    front: `<g fill="none" stroke="${INK}" stroke-width="64"><path d="${rib(100)}"/><path d="${rib(218)}"/></g>${lockup(INK)}`,
+  };
+});
+
+add('13-cruz-en-franjas', 'Cruz en franjas', () => {
+  const sk = 'M250 -260V330M-200 118H700';
+  const bands = [240, 168, 96, 32]
+    .map((w, i) => `<path d="${sk}" fill="none" stroke="${i % 2 ? WHITE : INK}" stroke-width="${w}" stroke-linecap="round"/>`)
+    .join('');
+  return { theme: 'white', scene: 'hang', cord: 'white', front: `${bands}${lockup(INK)}` };
+});
+
+add('14-senal', 'Señal', () => {
+  // abanico de señal: arcos de ±50° con puntas redondas y el punto abajo
+  const cx = 250;
+  const cy = 430;
+  const a = (50 * Math.PI) / 180;
+  let arcs = '';
+  for (let k = 0; k < 7; k++) {
+    const r = 82 + k * 62;
+    arcs += `M${f(cx - r * Math.sin(a))} ${f(cy - r * Math.cos(a))}A${r} ${r} 0 0 1 ${f(cx + r * Math.sin(a))} ${f(cy - r * Math.cos(a))}`;
+  }
+  return {
+    theme: 'black', scene: 'hang', cord: 'black',
+    front: `<path d="${arcs}" fill="none" stroke="${W_INK}" stroke-width="34" stroke-linecap="round"/><circle cx="${cx}" cy="${cy - 6}" r="24" fill="${W_INK}"/>${lockup(W_INK)}`,
+  };
+});
+
+add('15-bq-gigante', 'Bq gigante', () => ({
+  theme: 'black', scene: 'hang', cord: 'black',
+  front: `<text x="-40" y="345" ${FONT.script} font-size="560" fill="${W_INK}">Bq</text>${lockup(W_INK)}`,
+}));
+
 // ---------------------------------------------------------------- flat vector art (front panel only)
 const SVG_FONTS = "@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Playfair+Display:wght@900&amp;family=Playball&amp;family=EB+Garamond:ital,wght@0,400;1,400&amp;display=swap');";
 fs.mkdirSync(path.join(OUT, 'svg'), { recursive: true });
@@ -486,7 +602,7 @@ for (const c of concepts.filter((k) => !k.raster)) {
   ${c.defs || ''}
 </defs>
 <rect width="500" height="600" fill="${paper}"/>
-${c.front}
+${c.theme === 'white' ? c.front.replaceAll(WHITE, '#ffffff') : c.front}
 </svg>
 `;
   fs.writeFileSync(path.join(OUT, 'svg', `${c.id}.svg`), flat);
@@ -498,7 +614,7 @@ const list = only ? concepts.filter((c) => c.id.startsWith(only)) : concepts;
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: S.W, height: S.H }, deviceScaleFactor: 2 });
 for (const c of list) {
-  const html = `<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../fonts/fonts.css"><style>body{margin:0}svg{display:block}</style></head><body>${scene(c)}</body></html>`;
+  const html = `<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../fonts/fonts.css"><style>body{margin:0}svg{display:block}</style></head><body>${c.scene === 'hang' ? sceneHang(c) : scene(c)}</body></html>`;
   const file = path.join(OUT, `${c.id}.html`);
   fs.writeFileSync(file, html);
   await page.goto('file://' + file);

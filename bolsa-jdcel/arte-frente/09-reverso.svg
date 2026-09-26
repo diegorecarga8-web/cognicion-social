@@ -11,7 +11,7 @@
 <rect width="500" height="600" fill="#ffffff"/>
 <g font-family="Playfair Display" font-weight="900" font-size="74" text-anchor="middle">
   <text x="241.12" y="160.14" fill="#111111">J</text>
-  <text x="263.32" y="174.94" fill="#111111" stroke="#f6f6f4" stroke-width="3.33" stroke-linejoin="round" paint-order="stroke">J</text>
+  <text x="263.32" y="174.94" fill="#111111" stroke="#ffffff" stroke-width="3.33" stroke-linejoin="round" paint-order="stroke">J</text>
 </g>
 <line x1="128" x2="372" y1="218" y2="218" stroke="#111111" stroke-width="1"/>
 <g transform="translate(128 243) scale(1.08)"><path d="M12 2.8a9.2 9.2 0 0 0-7.9 13.9L2.9 21.2l4.6-1.2A9.2 9.2 0 1 0 12 2.8z" fill="none" stroke="#111111" stroke-width="1.9" stroke-linejoin="round"/><path d="M8.9 7.6c.3-.3.7-.3.9 0l1.2 1.9c.2.3.1.6-.1.9l-.6.7c.7 1.4 1.8 2.5 3.2 3.2l.7-.6c.3-.2.6-.3.9-.1l1.9 1.2c.3.2.3.6 0 .9l-.9.9c-.6.6-1.6.8-2.4.4-2.4-1.1-4.3-3-5.4-5.4-.4-.8-.2-1.8.4-2.4z" fill="#111111"/></g><text x="168" y="262" font-family="Archivo" font-weight="700" font-size="21" fill="#111111" style="font-stretch:105%">[tu número]</text>

@@ -5,8 +5,9 @@ Cómo abrirlas (en canva.com, desde el computador):
 1. En la página de inicio pulsa «Crear un diseño» (o «+ Crear») → «Importar archivo»
    y elige un .pptx. También puedes arrastrar el archivo a la ventana de Canva.
 2. Canva lo convierte en un diseño editable: cada texto, forma y gráfico queda suelto.
-   · JDCEL-bolsas-9-disenos.pptx trae las 9 bolsas, una por página.
-   · 01-corona.pptx … 09-reverso.pptx traen cada bolsa por separado.
+   · JDCEL-bolsas-9-disenos.pptx trae las 9 bolsas de la ronda 1, una por página.
+   · JDCEL-bolsas-ronda-2.pptx trae las 5 bolsas de la ronda 2 (11 a 15).
+   · 01-corona.pptx … 15-bq-gigante.pptx traen cada bolsa por separado.
 3. Cada página mide 25 × 30 cm: es el frente de la bolsa.
 
 Qué se puede editar:
