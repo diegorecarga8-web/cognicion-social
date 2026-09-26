@@ -29,7 +29,7 @@ Propuestas de bolsa para **JDCEL Bq** (celulares) en negro y blanco. Todas manti
 | 09 | Reverso | Blanca | Cara trasera para cualquier opción: WhatsApp, Instagram, dirección y QR. | 1 tinta negra |
 | 10 | Monograma claro | Blanca | Diseño nuevo: patrón gris claro de JJ y cruces, logo grande y el WhatsApp y el Instagram reales al frente. El arte original está en `arte-frente/10-monograma-claro.png`. | Negro y gris claro (el gris como trama del negro) |
 
-Los textos entre corchetes (`[tu número]`, `[@tu_usuario]`, `[dirección del local]`) y el «¡Gracias por tu compra!» son de ejemplo. El QR de los bocetos es de relleno: hay que generar el real (por ejemplo, un enlace `wa.me` al número de la tienda).
+Los textos entre corchetes (`[tu número]`, `[@tu_usuario]`, `[dirección del local]`) y el «¡Gracias por tu compra!» son de ejemplo. El QR de los bocetos es de relleno; el real, que abre el Instagram de la tienda, está en `canva/elementos/qr-instagram-jdcelbq.png`.
 
 ## Ronda 2 · a partir de la referencia del cliente
 
@@ -51,12 +51,12 @@ Presentación: `JDCEL-propuestas-bolsa-ronda-2.pptx`. Para Canva: `canva/JDCEL-b
 
 ![Diseño final, versiones A y B](mockups/final-comparacion.jpg)
 
-El arte del frente es el del cliente (`arte-frente/final-frente.png`). En el costado va un QR real que abre el chat de WhatsApp del 311 734 6937 (`https://wa.me/573117346937`), en dos alturas:
+El arte del frente es el del cliente (`arte-frente/final-frente.png`). En el costado va un QR real que abre el Instagram de la tienda (`https://www.instagram.com/jdcelbq_`), en dos alturas:
 
 - **A · QR como antes:** a 16,5 cm del borde de arriba (`mockups/final-a-qr-como-antes.jpg`).
 - **B · QR más arriba:** a 9,6 cm, a la altura del eslogan grande (`mockups/final-b-qr-mas-arriba.jpg`).
 
-El QR mide 6,4 × 6,4 cm y va centrado en el costado de 10 cm. Para montarlo en Canva: `canva/elementos/qr-whatsapp-3117346937.png` (o `.svg`). El costado completo (10 × 30 cm) en las dos alturas está en `arte-fuelle/`. Ese costado se dobla por la mitad cuando la bolsa se guarda plana, así que conviene probar el QR impreso antes del tiraje.
+El QR mide 6,4 × 6,4 cm y va centrado en el costado de 10 cm. Para montarlo en Canva: `canva/elementos/qr-instagram-jdcelbq.png` (o `.svg`). El costado completo (10 × 30 cm) en las dos alturas está en `arte-fuelle/`. Ese costado se dobla por la mitad cuando la bolsa se guarda plana, así que conviene probar el QR impreso antes del tiraje.
 
 ## Producción
 

@@ -607,18 +607,18 @@ add('15-bq-gigante', 'Bq gigante', () => ({
 
 
 // ---------------------------------------------------------------- diseño final (el que eligió el cliente)
-// Su arte en el frente y un QR real de WhatsApp en el costado, en dos alturas.
-const WHATSAPP = 'https://wa.me/573117346937';
+// Su arte en el frente y un QR real en el costado que abre el Instagram de la tienda, en dos alturas.
+const INSTAGRAM = 'https://www.instagram.com/jdcelbq_';
 const finalFront = `<image href="../../arte-frente/final-frente.png" x="0" y="0" width="500" height="600" preserveAspectRatio="xMidYMid slice" style="mix-blend-mode:multiply"/>`;
-add('final-a-qr-como-antes', 'Final · QR como antes', () => ({ theme: 'white', raster: true, fuelle: true, front: finalFront, gusset: qrCode(36, 330, 128, INK, WHATSAPP) }));
-add('final-b-qr-mas-arriba', 'Final · QR más arriba', () => ({ theme: 'white', raster: true, fuelle: true, front: finalFront, gusset: qrCode(36, 193, 128, INK, WHATSAPP) }));
+add('final-a-qr-como-antes', 'Final · QR como antes', () => ({ theme: 'white', raster: true, fuelle: true, front: finalFront, gusset: qrCode(36, 330, 128, INK, INSTAGRAM) }));
+add('final-b-qr-mas-arriba', 'Final · QR más arriba', () => ({ theme: 'white', raster: true, fuelle: true, front: finalFront, gusset: qrCode(36, 193, 128, INK, INSTAGRAM) }));
 
 // ---------------------------------------------------------------- flat vector art (front panel only)
 const SVG_FONTS = "@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Playfair+Display:wght@900&amp;family=Playball&amp;family=EB+Garamond:ital,wght@0,400;1,400&amp;display=swap');";
 fs.mkdirSync(path.join(OUT, 'svg'), { recursive: true });
 for (const c of concepts.filter((k) => k.fuelle)) {
   fs.writeFileSync(path.join(OUT, 'svg', `fuelle-${c.id}.svg`), `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 600" width="100mm" height="300mm">
-<!-- JDCEL Bq · ${c.title} · costado (fuelle) de 10 x 30 cm; se dobla por la mitad (x = 100) cuando la bolsa se aplana. QR: WhatsApp 3117346937 -->
+<!-- JDCEL Bq · ${c.title} · costado (fuelle) de 10 x 30 cm; se dobla por la mitad (x = 100) cuando la bolsa se aplana. QR: Instagram @jdcelbq_ -->
 <rect width="200" height="600" fill="#ffffff"/>
 ${c.gusset}
 </svg>
