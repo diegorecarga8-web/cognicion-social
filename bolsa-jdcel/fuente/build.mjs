@@ -168,7 +168,7 @@ function eyelet(x, y, dark) {
 <circle cx="${x}" cy="${y}" r="5.8" fill="#0b0b0b"/>`;
 }
 
-function scene({ theme = 'white', front = '', gusset = '', cord = 'black', defs = '' }) {
+function scene({ theme = 'white', front = '', gusset = '', cord = 'black', defs = '', mirror = false, bg = true }) {
   const white = theme === 'white';
   const T = white
     ? { paper: WHITE, gusL: '#e7e7e4', gusR: '#d9d9d5', interior: '#c7c6c1', edgeHi: 0.95, line: 0.07, lineHi: 0.9, light: 0.22, dark: 0.1, noise: 0.07, gusShade: 0.08 }
@@ -181,6 +181,8 @@ function scene({ theme = 'white', front = '', gusset = '', cord = 'black', defs 
   const frontRope = `M${ex1} ${ey}C${ex1 - 4} ${ey - lift} ${ex2 + 4} ${ey - lift} ${ex2} ${ey}`;
   const backRope = `M${ex1 + gw} ${ey - gr}C${ex1 + gw - 4} ${ey - gr - lift} ${ex2 + gw + 4} ${ey - gr - lift} ${ex2 + gw} ${ey - gr}`;
   const gm = `matrix(${gw / 200} ${-gr / 200} 0 1 ${fx + fw} ${fy})`;
+  // En espejo se ve el reverso y el costado izquierdo; el arte se voltea de nuevo para que se lea al derecho.
+  const flip = (w, art) => (mirror ? `<g transform="matrix(-1 0 0 1 ${w} 0)">${art}</g>` : art);
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${S.W} ${S.H}" width="${S.W}" height="${S.H}">
 <defs>
@@ -225,8 +227,8 @@ function scene({ theme = 'white', front = '', gusset = '', cord = 'black', defs 
   <clipPath id="cR"><rect x="250" y="0" width="250" height="600"/></clipPath>
   ${defs}
 </defs>
-<rect width="${S.W}" height="${S.H}" fill="url(#bg)"/>
-
+${bg ? `<rect width="${S.W}" height="${S.H}" fill="url(#bg)"/>` : ''}
+<g${mirror ? ` transform="matrix(-1 0 0 1 ${S.W} 0)"` : ''}>
 <!-- floor shadows -->
 <path d="M${fx + fw + gw - 10} ${fy + fh - gr} L${fx + fw + gw + 150} ${fy + fh - gr + 8} L${fx + fw + 130} ${fy + fh + 22} L${fx + fw} ${fy + fh} Z" fill="#000" opacity=".12" filter="url(#soft)"/>
 <ellipse cx="${fx + fw / 2 + 35}" cy="${fy + fh + 2}" rx="${fw / 2 + 70}" ry="16" fill="#000" opacity=".26" filter="url(#blur14)"/>
@@ -242,7 +244,7 @@ ${rope(backRope, cord)}
   <path d="M0 0L100 40L200 0Z" fill="${T.interior}"/>
   <path d="M0 0L100 40V600H0Z" fill="${T.gusL}"/>
   <path d="M100 40L200 0V600H100Z" fill="${T.gusR}"/>
-  <g clip-path="url(#gusClip)">${gusset}</g>
+  <g clip-path="url(#gusClip)">${flip(200, gusset)}</g>
   <path d="M100 40L200 0V600H100Z" fill="#000" opacity="${T.gusShade * 0.6}"/>
   <path d="M0 0L100 40V600H0Z" fill="#000" opacity="${T.gusShade * 0.25}"/>
   <path d="M0 0L100 40L200 0" fill="none" stroke="#fff" stroke-opacity="${T.edgeHi * 0.6}" stroke-width="2.2"/>
@@ -254,7 +256,7 @@ ${rope(backRope, cord)}
 <!-- front -->
 <g transform="translate(${fx} ${fy})">
   <rect width="${fw}" height="${fh}" fill="${T.paper}"/>
-  <g clip-path="url(#frontClip)">${front}</g>
+  <g clip-path="url(#frontClip)">${flip(fw, front)}</g>
   <rect width="${fw}" height="${fh}" fill="url(#light)"/>
   <rect width="${fw}" height="${fh}" filter="url(#noise)"/>
   <line x1="0" x2="${fw}" y1="72" y2="72" stroke="#000" stroke-opacity="${T.line}" stroke-width="1.2"/>
@@ -269,6 +271,7 @@ ${rope(backRope, cord)}
 </g>
 
 ${rope(frontRope, cord)}
+</g>
 </svg>`;
 }
 
@@ -607,11 +610,157 @@ add('15-bq-gigante', 'Bq gigante', () => ({
 
 
 // ---------------------------------------------------------------- diseño final (el que eligió el cliente)
-// Su arte en el frente y un QR real en el costado que abre el Instagram de la tienda, en dos alturas.
+// Su arte en el frente y en el reverso, y un QR real en los dos costados que abre el Instagram de la tienda, en dos alturas.
 const INSTAGRAM = 'https://www.instagram.com/jdcelbq_';
 const finalFront = `<image href="../../arte-frente/final-frente.png" x="0" y="0" width="500" height="600" preserveAspectRatio="xMidYMid slice" style="mix-blend-mode:multiply"/>`;
-add('final-a-qr-como-antes', 'Final · QR como antes', () => ({ theme: 'white', raster: true, fuelle: true, front: finalFront, gusset: qrCode(36, 330, 128, INK, INSTAGRAM) }));
-add('final-b-qr-mas-arriba', 'Final · QR más arriba', () => ({ theme: 'white', raster: true, fuelle: true, front: finalFront, gusset: qrCode(36, 193, 128, INK, INSTAGRAM) }));
+const QR = { x: 36, size: 128, y: { a: 330, b: 192 } }; // 6,4 cm, centrado; a 16,5 cm o a 9,6 cm del borde de arriba
+const finalOpt = (k) => ({ theme: 'white', raster: true, fuelle: true, front: finalFront, gusset: qrCode(QR.x, QR.y[k], QR.size, INK, INSTAGRAM) });
+add('final-a-qr-como-antes', 'Final · QR como antes', () => finalOpt('a'));
+add('final-b-qr-mas-arriba', 'Final · QR más arriba', () => finalOpt('b'));
+
+// Vistas rectas de cada cara, en las mismas unidades (frente 500 × 600, costado 200 × 600).
+const BACKDROP = `<radialGradient id="backdrop" cx="50%" cy="42%" r="75%">
+    <stop offset="0" stop-color="#f3f2ef"/><stop offset=".62" stop-color="#e5e4e0"/><stop offset="1" stop-color="#d2d0cb"/>
+  </radialGradient>`;
+const VIEW_DEFS = `${BACKDROP}
+  <linearGradient id="lightF" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#fff" stop-opacity=".18"/><stop offset=".55" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".07"/>
+  </linearGradient>
+  <linearGradient id="deep" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".4"/>
+  </linearGradient>
+  <radialGradient id="metal" cx="35%" cy="30%" r="80%">
+    <stop offset="0" stop-color="#ffffff"/><stop offset=".45" stop-color="#bdbdbd"/><stop offset="1" stop-color="#6d6d6d"/>
+  </radialGradient>
+  <filter id="soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="3"/></filter>
+  <filter id="blur2" x="-10%" y="-50%" width="120%" height="200%"><feGaussianBlur stdDeviation="2.5"/></filter>
+  <filter id="blur14" x="-30%" y="-300%" width="160%" height="700%"><feGaussianBlur stdDeviation="14"/></filter>
+  <filter id="noise" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="4"/>
+    <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0.07 0 0 0 0"/>
+  </filter>
+  <clipPath id="frontClip"><rect x="0" y="0" width="500" height="600"/></clipPath>
+  <clipPath id="gusClip"><path d="M0 0L100 40L200 0V600H0Z"/></clipPath>`;
+
+// De frente (o de espaldas): se asoma el borde de la cara de atrás y su manija, como visto un poco desde arriba.
+function viewFront({ front, cord = 'black' }) {
+  const handle = (y) => `M160 ${y}C156 ${y - 255} 344 ${y - 255} 340 ${y}`;
+  return `<ellipse cx="250" cy="603" rx="285" ry="14" fill="#000" opacity=".28" filter="url(#blur14)"/>
+<path d="M6 600H494" stroke="#000" stroke-opacity=".4" stroke-width="4" filter="url(#blur2)"/>
+${rope(handle(22), cord)}
+<rect y="-12" width="500" height="12" fill="#c7c6c1"/>
+<rect y="-12" width="500" height="12" fill="url(#deep)"/>
+<line x1="0" x2="500" y1="-11.4" y2="-11.4" stroke="#fff" stroke-opacity=".8" stroke-width="1.2"/>
+<rect width="500" height="600" fill="${WHITE}"/>
+<g clip-path="url(#frontClip)">${front}</g>
+<rect width="500" height="600" fill="url(#lightF)"/>
+<rect width="500" height="600" filter="url(#noise)"/>
+<line x1="0" x2="500" y1="72" y2="72" stroke="#000" stroke-opacity=".07" stroke-width="1.2"/>
+<line x1="0" x2="500" y1="73.6" y2="73.6" stroke="#fff" stroke-opacity=".9" stroke-width="1"/>
+<rect y="550" width="500" height="10" fill="#000" opacity=".035" filter="url(#blur2)"/>
+<line x1="0" x2="500" y1="558" y2="558" stroke="#fff" stroke-opacity=".6" stroke-width="1"/>
+<line x1=".8" x2=".8" y1="0" y2="600" stroke="#fff" stroke-opacity=".95" stroke-width="1.6"/>
+<line x1="0" x2="500" y1=".8" y2=".8" stroke="#fff" stroke-opacity=".95" stroke-width="1.6"/>
+<line x1="499.4" x2="499.4" y1="0" y2="600" stroke="#000" stroke-opacity=".1" stroke-width="1.2"/>
+${eyelet(160, 34, false)}
+${eyelet(340, 34, false)}
+${rope(handle(34), cord)}`;
+}
+
+// De lado: el costado con su pliegue en V arriba; las manijas se ven de canto en el borde del frente y del reverso.
+function viewSide({ gusset, cord = 'black', handles = true }) {
+  const handle = (x, dir) => `M${x} 36C${x - dir * 2} -50 ${x + dir * 4} -126 ${x + dir * 28} -150`;
+  return `<ellipse cx="100" cy="603" rx="125" ry="13" fill="#000" opacity=".28" filter="url(#blur14)"/>
+<path d="M4 600H196" stroke="#000" stroke-opacity=".4" stroke-width="4" filter="url(#blur2)"/>
+${handles ? rope(handle(-4, 1), cord) + rope(handle(204, -1), cord) : ''}
+<path d="M0 0L100 40L200 0Z" fill="#c7c6c1"/>
+<path d="M0 0L100 40L200 0Z" fill="url(#deep)"/>
+<path d="M0 0L100 40L200 0V600H0Z" fill="${WHITE}"/>
+<g clip-path="url(#gusClip)">${gusset}</g>
+<path d="M100 40L200 0V600H100Z" fill="#000" opacity=".035"/>
+<rect width="200" height="600" fill="url(#lightF)" clip-path="url(#gusClip)"/>
+<rect width="200" height="600" filter="url(#noise)" clip-path="url(#gusClip)"/>
+<path d="M100 40V600" stroke="#000" stroke-opacity=".1" stroke-width="1.4"/>
+<path d="M98.4 42V600" stroke="#fff" stroke-opacity=".6" stroke-width="1.2"/>
+<path d="M0 .8L100 40.8L200 .8" fill="none" stroke="#fff" stroke-opacity=".85" stroke-width="1.8"/>
+<line x1=".8" x2=".8" y1="0" y2="600" stroke="#fff" stroke-opacity=".95" stroke-width="1.6"/>
+<line x1="199.4" x2="199.4" y1="0" y2="600" stroke="#000" stroke-opacity=".1" stroke-width="1.2"/>`;
+}
+
+// ---------------------------------------------------------------- láminas de 16:9 del diseño final
+// Sin texto van a la presentación (allí los textos son editables); con rótulos quedan en mockups/ para compartir.
+const COMP = { W: 1600, H: 900 };
+const comps = [];
+const layout = {};
+const compSvg = (defs, body) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${COMP.W} ${COMP.H}" width="${COMP.W}" height="${COMP.H}">
+<defs>${defs}</defs>
+<rect width="${COMP.W}" height="${COMP.H}" fill="url(#backdrop)"/>
+${body}
+</svg>`;
+const sheetTitle = (t) => `<text x="64" y="86" ${FONT.word} font-size="40" fill="${INK}">JDCEL</text>
+<text x="252" y="86" ${FONT.serif} font-size="28" fill="${INK}">${t}</text>`;
+const caption = (cx, y, t1, t2 = '') => `<text x="${f(cx)}" y="${y}" font-family="Archivo" font-weight="800" font-size="21" fill="${INK}" text-anchor="middle">${t1}</text>${t2 && `<text x="${f(cx)}" y="${y + 27}" ${FONT.serif} font-size="20" fill="#555" text-anchor="middle">${t2}</text>`}`;
+
+// Dos bolsas de 3/4 en la misma imagen: cada escena de 900 × 1000 se reduce y se monta sin su fondo.
+const DUO = { k: 0.82, y: 88, gap: 150 };
+const nest = (svg, x, y, k) => svg.replace(`width="${S.W}" height="${S.H}"`, `x="${f(x)}" y="${f(y)}" width="${f(S.W * k)}" height="${f(S.H * k)}" overflow="visible"`);
+const bagSpan = (mirror) => (mirror ? [S.W - (S.fx + S.fw + S.gw), S.W - S.fx] : [S.fx, S.fx + S.fw + S.gw]);
+function duo(left, right) {
+  const { k, y, gap } = DUO;
+  const [l0, l1] = bagSpan(left.mirror).map((v) => v * k);
+  const [r0, r1] = bagSpan(right.mirror).map((v) => v * k);
+  const xl = (COMP.W - (l1 - l0 + gap + r1 - r0)) / 2 - l0;
+  const xr = xl + l1 + gap - r0;
+  return {
+    body: nest(scene({ ...left, bg: false }), xl, y, k) + nest(scene({ ...right, bg: false }), xr, y, k),
+    centers: [xl + (l0 + l1) / 2, xr + (r0 + r1) / 2],
+    bottom: y + (S.fy + S.fh) * k,
+  };
+}
+
+// Las cuatro caras en fila, en el orden en que se recorre la bolsa: frente, costado derecho, reverso, costado izquierdo.
+const LINEUP = { s: 0.8, top: 300, gap: 70 };
+function lineup(opt) {
+  const { s, top, gap } = LINEUP;
+  const widths = [500, 200, 500, 200].map((w) => w * s);
+  let x = (COMP.W - widths.reduce((a, b) => a + b) - gap * 3) / 2;
+  const xs = widths.map((w) => (x += w + gap) - w - gap);
+  const views = [viewFront(opt), viewSide(opt), viewFront(opt), viewSide(opt)];
+  return {
+    body: views.map((v, i) => `<g transform="translate(${f(xs[i])} ${top}) scale(${s})">${v}</g>`).join('\n'),
+    xs, widths, top, bottom: top + 600 * s,
+  };
+}
+
+// Los dos costados de cerca, sin manijas, para acotar el QR.
+const QRD = { s: 1.1, top: 118, xs: [905, 1255] };
+
+for (const k of ['a', 'b']) {
+  const o = finalOpt(k);
+  const tag = k === 'a' ? 'opción A · QR a 16,5 cm del borde' : 'opción B · QR a 9,6 cm del borde';
+  const d = duo(o, { ...o, mirror: true });
+  layout[`${k}-duo`] = { centers: d.centers, bottom: d.bottom };
+  comps.push({ id: `final-${k}-duo`, svg: () => compSvg(BACKDROP, d.body) });
+  comps.push({ id: `final-${k}-frente-y-reverso`, share: true, svg: () => compSvg(BACKDROP, `${d.body}${sheetTitle(`diseño final · ${tag}`)}
+${caption(d.centers[0], d.bottom + 52, 'Frente y costado derecho')}${caption(d.centers[1], d.bottom + 52, 'Reverso y costado izquierdo')}`) });
+
+  const l = lineup(o);
+  layout[`${k}-vistas`] = { xs: l.xs, widths: l.widths, top: l.top, bottom: l.bottom };
+  const names = [['Frente', '25 × 30 cm'], ['Costado derecho', '10 × 30 cm · QR'], ['Reverso', 'igual al frente'], ['Costado izquierdo', '10 × 30 cm · QR']];
+  comps.push({ id: `final-${k}-vistas`, svg: () => compSvg(VIEW_DEFS, l.body) });
+  comps.push({ id: `final-${k}-cuatro-caras`, share: true, svg: () => compSvg(VIEW_DEFS, `${l.body}${sheetTitle(`las cuatro caras · ${tag}`)}
+${names.map(([a, b], i) => caption(l.xs[i] + l.widths[i] / 2, l.bottom + 48, a, b)).join('')}`) });
+}
+{
+  const d = duo(finalOpt('a'), finalOpt('b'));
+  layout['ab-duo'] = { centers: d.centers, bottom: d.bottom };
+  comps.push({ id: 'final-ab-duo', svg: () => compSvg(BACKDROP, d.body) });
+  layout.qr = { ...QRD, x: QR.x, size: QR.size, y: QR.y };
+  comps.push({ id: 'final-qr-detalle', svg: () => compSvg(VIEW_DEFS, ['a', 'b'].map((k, i) =>
+    `<g transform="translate(${QRD.xs[i]} ${QRD.top}) scale(${QRD.s})">${viewSide({ ...finalOpt(k), handles: false })}</g>`).join('\n')) });
+}
+layout.comp = COMP;
+fs.writeFileSync(path.join(OUT, 'final-layout.json'), JSON.stringify(layout, null, 1));
 
 // ---------------------------------------------------------------- flat vector art (front panel only)
 const SVG_FONTS = "@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Playfair+Display:wght@900&amp;family=Playball&amp;family=EB+Garamond:ital,wght@0,400;1,400&amp;display=swap');";
@@ -645,13 +794,14 @@ ${c.theme === 'white' ? c.front.replaceAll(WHITE, '#ffffff') : c.front}
 
 // ---------------------------------------------------------------- render
 const only = process.argv[2];
-const list = only ? concepts.filter((c) => c.id.startsWith(only)) : concepts;
+const pick = (list) => (only ? list.filter((c) => c.id.startsWith(only)) : list);
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: S.W, height: S.H }, deviceScaleFactor: 2 });
-for (const c of list) {
-  const html = `<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../fonts/fonts.css"><style>body{margin:0}svg{display:block}</style></head><body>${c.scene === 'hang' ? sceneHang(c) : scene(c)}</body></html>`;
-  const file = path.join(OUT, `${c.id}.html`);
+async function shoot(id, svg, width, height) {
+  const html = `<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../fonts/fonts.css"><style>body{margin:0}svg{display:block}</style></head><body>${svg}</body></html>`;
+  const file = path.join(OUT, `${id}.html`);
   fs.writeFileSync(file, html);
+  await page.setViewportSize({ width, height });
   await page.goto('file://' + file);
   await page.evaluate(async () => {
     await Promise.all([
@@ -661,7 +811,9 @@ for (const c of list) {
     await document.fonts.ready;
   });
   await page.waitForTimeout(150);
-  await page.screenshot({ path: path.join(OUT, `${c.id}.jpg`), type: 'jpeg', quality: 90 });
-  console.log('rendered', c.id);
+  await page.screenshot({ path: path.join(OUT, `${id}.jpg`), type: 'jpeg', quality: 90 });
+  console.log('rendered', id);
 }
+for (const c of pick(concepts)) await shoot(c.id, c.scene === 'hang' ? sceneHang(c) : scene(c), S.W, S.H);
+for (const c of pick(comps)) await shoot(c.id, c.svg(), COMP.W, COMP.H);
 await browser.close();

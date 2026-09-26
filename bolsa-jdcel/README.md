@@ -51,12 +51,26 @@ Presentación: `JDCEL-propuestas-bolsa-ronda-2.pptx`. Para Canva: `canva/JDCEL-b
 
 ![Diseño final, versiones A y B](mockups/final-comparacion.jpg)
 
-El arte del frente es el del cliente (`arte-frente/final-frente.png`). En el costado va un QR real que abre el Instagram de la tienda (`https://www.instagram.com/jdcelbq_`), en dos alturas:
+El arte del frente es el del cliente (`arte-frente/final-frente.png`), y el reverso lleva el mismo arte. En los dos costados va un QR real que abre el Instagram de la tienda (`https://www.instagram.com/jdcelbq_`), en dos alturas:
 
 - **A · QR como antes:** a 16,5 cm del borde de arriba (`mockups/final-a-qr-como-antes.jpg`).
 - **B · QR más arriba:** a 9,6 cm, a la altura del eslogan grande (`mockups/final-b-qr-mas-arriba.jpg`).
 
 El QR mide 6,4 × 6,4 cm y va centrado en el costado de 10 cm. Para montarlo en Canva: `canva/elementos/qr-instagram-jdcelbq.png` (o `.svg`). El costado completo (10 × 30 cm) en las dos alturas está en `arte-fuelle/`. Ese costado se dobla por la mitad cuando la bolsa se guarda plana, así que conviene probar el QR impreso antes del tiraje.
+
+![Las cuatro caras, opción B](mockups/final-b-cuatro-caras.jpg)
+
+La presentación `JDCEL-bolsa-diseno-final.pptx` (y la misma en PDF, `JDCEL-bolsa-diseno-final.pdf`, para mandarla por WhatsApp o correo) muestra la bolsa por todos lados, en 10 diapositivas:
+
+- **1 ·** Portada.
+- **2 ·** Las dos alturas del QR, lado a lado.
+- **3 y 5 ·** Cada opción de frente y de espaldas: el frente con el costado derecho, y el reverso con el costado izquierdo.
+- **4 y 6 ·** Cada opción en sus cuatro caras vistas de frente: frente, costado derecho, reverso y costado izquierdo.
+- **7 ·** El QR de cerca, con sus medidas y un QR para escanear desde la pantalla.
+- **8 y 9 ·** El desplegado de cada opción: todas las caras en una sola pieza, a escala, con cortes, dobleces, boca, fondo, pestaña de pegue y ojales. Es un troquel de referencia: la imprenta lo ajusta a su máquina.
+- **10 ·** Cómo producirla y los siguientes pasos.
+
+Todo es editable: los títulos, los rótulos, las cotas y el desplegado (formas nativas con el arte y el QR como imágenes). Las mismas vistas, con rótulos, están sueltas en `mockups/final-{a,b}-frente-y-reverso.jpg` y `mockups/final-{a,b}-cuatro-caras.jpg`.
 
 ## Producción
 
@@ -79,6 +93,7 @@ Si Canva importa algo raro, `canva/pdf/` tiene los mismos diseños en PDF (Canva
 
 - `JDCEL-propuestas-bolsa.pptx`: presentación con las bolsas montadas (portada, las diez de un vistazo, una diapositiva por propuesta con su arte del frente, tabla comparativa y cómo producirla). Las notas del orador explican cada idea.
 - `JDCEL-propuestas-bolsa-ronda-2.pptx`: presentación de la ronda 2 (portada, qué se tomó de la referencia, las cinco de un vistazo, una diapositiva por propuesta y cómo producirla).
+- `JDCEL-bolsa-diseno-final.pptx` y `.pdf`: el diseño final por todos lados (ver arriba).
 - `mockups/`: imágenes JPG de cada bolsa (1800 × 2000 px) y la lámina con todas.
 - `arte-frente/`: el frente de cada propuesta en SVG editable (25 × 30 cm). Se abre en Illustrator, Figma o Inkscape; instala las fuentes o conviértelas en contornos.
 - `canva/`: los mismos frentes listos para importar en Canva (`.pptx`, `.pdf` y gráficos sueltos en SVG).
@@ -92,4 +107,5 @@ Si Canva importa algo raro, `canva/pdf/` tiene los mismos diseños en PDF (Canva
   pip install python-pptx fonttools brotli uharfbuzz pyclipper svgelements
   python3 canva.py    # regenera la carpeta canva/ (los PDF necesitan LibreOffice Impress)
   npm install && node presentacion.mjs   # regenera las dos presentaciones
+  node build.mjs final && node presentacion-final.mjs   # vistas y presentación del diseño final
   ```
