@@ -49,10 +49,11 @@ Si Canva importa algo raro, `canva/pdf/` tiene los mismos diseños en PDF (Canva
 
 ## Archivos
 
+- `JDCEL-propuestas-bolsa.pptx`: presentación con las bolsas montadas (portada, las nueve de un vistazo, una diapositiva por propuesta con su arte del frente, tabla comparativa y cómo producirla). Las notas del orador explican cada idea.
 - `mockups/`: imágenes JPG de cada bolsa (1800 × 2000 px) y la lámina con todas.
 - `arte-frente/`: el frente de cada propuesta en SVG editable (25 × 30 cm). Se abre en Illustrator, Figma o Inkscape; instala las fuentes o conviértelas en contornos.
 - `canva/`: los mismos frentes listos para importar en Canva (`.pptx`, `.pdf` y gráficos sueltos en SVG).
-- `fuente/`: los scripts que generan todo, por si hay que hacer ajustes (Node 22 + Playwright con Chromium; Python para Canva):
+- `fuente/`: los scripts que generan todo, por si hay que hacer ajustes (Node 22 + Playwright con Chromium; Python para Canva; pptxgenjs para la presentación):
 
   ```sh
   cd bolsa-jdcel/fuente
@@ -61,4 +62,5 @@ Si Canva importa algo raro, `canva/pdf/` tiene los mismos diseños en PDF (Canva
   node overview.mjs   # genera out/overview.jpg con todas
   pip install python-pptx fonttools brotli uharfbuzz pyclipper svgelements
   python3 canva.py    # regenera la carpeta canva/ (los PDF necesitan LibreOffice Impress)
+  npm install && node presentacion.mjs   # regenera JDCEL-propuestas-bolsa.pptx
   ```
