@@ -388,18 +388,20 @@ ${slogan(250, 540, 23, c)}`;
   };
 });
 
+// patrón de monogramas y cruces (06 en barniz sobre negro, 10 en gris claro)
+function pattern(w, h, ox = 0, oy = 0, fill = 'url(#gloss)', gap = BLACK) {
+  let p = '';
+  for (let j = -1; j * 84 < h + 84; j++)
+    for (let i = -1; i * 84 < w + 84; i++) {
+      const x = ox + 42 + i * 84;
+      const y = oy + 42 + j * 84;
+      p += monogram(x, y, 40, fill, gap);
+      p += icon.cross(x + 42, y + 42, 17, fill);
+    }
+  return p;
+}
+
 add('06-monograma', 'Monograma', () => {
-  const pattern = (w, h, ox = 0, oy = 0) => {
-    let p = '';
-    for (let j = -1; j * 84 < h + 84; j++)
-      for (let i = -1; i * 84 < w + 84; i++) {
-        const x = ox + 42 + i * 84;
-        const y = oy + 42 + j * 84;
-        p += monogram(x, y, 40, 'url(#gloss)', BLACK);
-        p += icon.cross(x + 42, y + 42, 17, 'url(#gloss)');
-      }
-    return p;
-  };
   return {
     theme: 'black',
     front: `${pattern(500, 600)}
@@ -461,10 +463,17 @@ ${slogan(250, 566, 21, INK, 'middle', true)}`,
   };
 });
 
+add('10-monograma-claro', 'Monograma claro', () => ({
+  theme: 'white',
+  raster: true,
+  front: `<image href="../../arte-frente/10-monograma-claro.png" x="0" y="0" width="500" height="600" preserveAspectRatio="xMidYMid slice" style="mix-blend-mode:multiply"/>`,
+  gusset: pattern(200, 600, -20, 10, '#CBCBCB', '#E7E7E4'),
+}));
+
 // ---------------------------------------------------------------- flat vector art (front panel only)
 const SVG_FONTS = "@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Playfair+Display:wght@900&amp;family=Playball&amp;family=EB+Garamond:ital,wght@0,400;1,400&amp;display=swap');";
 fs.mkdirSync(path.join(OUT, 'svg'), { recursive: true });
-for (const c of concepts) {
+for (const c of concepts.filter((k) => !k.raster)) {
   const paper = c.theme === 'black' ? BLACK : '#ffffff';
   const flat = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600" width="250mm" height="300mm">
 <!-- JDCEL Bq · ${c.title} · frente 25 x 30 cm (1 unidad = 0,5 mm). Los 3,6 cm superiores (y < 72) son la boca que se dobla hacia adentro. Monograma JJ aproximado: reemplazar por el vector original. -->

@@ -61,6 +61,12 @@ const P = [
     desc: 'La cara de atrás, para combinar con cualquier propuesta: WhatsApp, Instagram, dirección y un QR que abre el chat de la tienda.',
     notes: 'La cara de atrás sirve para cualquier propuesta. Los datos entre corchetes son de ejemplo: hay que poner el número, el @ y la dirección reales, y generar el QR con un enlace wa.me al número de la tienda.',
   },
+  {
+    id: '10-monograma-claro', n: '10', name: 'Monograma claro', raster: true, bag: 'Blanca', print: 'Negro y gris claro (el gris sale de una trama del negro)', table: 'Blanca',
+    tablePrint: 'Negro y gris claro (trama del negro)', handles: 'Cordón negro', level: 'Baja',
+    desc: 'La versión clara del monograma: un patrón gris de JJ y cruces cubre la bolsa blanca, con el logo grande y el WhatsApp y el Instagram de la tienda al frente.',
+    notes: 'La versión clara del patrón de la propuesta 06: monogramas y cruces en gris claro sobre blanco, logo grande y contacto al frente (WhatsApp 3117346937, Instagram jdcelbq_). El gris puede imprimirse como una trama del negro, así que sale con una sola tinta.',
+  },
 ];
 
 const mockup = (id) => path.join(ROOT, 'mockups', `${id}.jpg`);
@@ -76,7 +82,10 @@ const page = await browser.newPage();
 
 // Arte plano del frente, desde los SVG de arte-frente/ con las fuentes locales.
 await page.setViewportSize({ width: 1000, height: 1200 });
-for (const p of P) {
+for (const p of P.filter((k) => k.raster)) {
+  await sharp(path.join(ROOT, 'arte-frente', `${p.id}.png`)).resize(1000, 1200, { fit: 'contain', background: '#ffffff' }).png().toFile(flat(p.id));
+}
+for (const p of P.filter((k) => !k.raster)) {
   const svg = fs.readFileSync(path.join(ROOT, 'arte-frente', `${p.id}.svg`), 'utf8').replace(/<style>[\s\S]*?<\/style>/, '');
   const html = path.join(ASSETS, `arte-${p.id}.html`);
   fs.writeFileSync(html, `<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="../../fonts/fonts.css"><style>body{margin:0}svg{display:block;width:1000px;height:1200px}</style></head><body>${svg}</body></html>`);
@@ -132,7 +141,7 @@ const text = (slide, t, o) => slide.addText(t, { margin: 0, isTextBox: true, val
   s.addImage({ path: logos.bq.path, x: 0.8 + (wmW - bqW) / 2, y: 1.43 + wmH, w: bqW, h: bqW / logos.bq.ratio, altText: 'Bq' });
   text(s, [{ text: 'Propuestas', options: { breakLine: true } }, { text: 'de bolsa' }], { x: 0.8, y: 3.4, w: 5.4, h: 1.45, fontFace: SERIF, fontSize: 40, color: WHITE });
   text(s, 'bendecidos para bendecir', { x: 0.8, y: 5.0, w: 5.4, h: 0.5, fontFace: SERIF, fontSize: 20, italic: true, color: MUTED_D });
-  text(s, `9 ideas en negro y blanco · frente de ${dim('25 × 30 cm')}`, { x: 0.8, y: 6.55, w: 5.4, h: 0.3, fontFace: SANS, fontSize: 12, color: '8C8C8C' });
+  text(s, `10 ideas en negro y blanco · frente de ${dim('25 × 30 cm')}`, { x: 0.8, y: 6.55, w: 5.4, h: 0.3, fontFace: SANS, fontSize: 12, color: '8C8C8C' });
   s.addNotes('Propuestas de bolsa para JDCEL Bq, todas en negro y blanco. El monograma JJ de las imágenes es una aproximación hecha con tipografía: en producción va el logo original.');
 }
 
@@ -140,7 +149,7 @@ const text = (slide, t, o) => slide.addText(t, { margin: 0, isTextBox: true, val
 {
   const s = pres.addSlide();
   s.background = { color: WHITE };
-  text(s, 'Nueve propuestas', { x: 0.6, y: 0.45, w: 8, h: 0.7, fontFace: SERIF, fontSize: 36, color: INK });
+  text(s, 'Diez propuestas', { x: 0.6, y: 0.45, w: 8, h: 0.7, fontFace: SERIF, fontSize: 36, color: INK });
   text(s, 'Todas en negro y blanco, con el nombre y el eslogan de la marca.', { x: 0.6, y: 1.12, w: 9, h: 0.35, fontFace: SANS, fontSize: 14, color: MUTED });
   const tw = 1.694;
   const th = 2.2;
@@ -155,7 +164,7 @@ const text = (slide, t, o) => slide.addText(t, { margin: 0, isTextBox: true, val
       text(s, [{ text: `${p.n}  `, options: { bold: true } }, { text: p.name }], { x, y: y + th + 0.06, w: tw + 0.4, h: 0.28, fontFace: SANS, fontSize: 11, color: INK });
     });
   });
-  s.addNotes('Las ocho primeras son el frente de la bolsa; la 09 es un reverso que se combina con cualquiera. El monograma JJ de las imágenes es aproximado.');
+  s.addNotes('Todas son el frente de la bolsa, menos la 09, que es un reverso para combinar con cualquiera. La 10 es el diseño nuevo con el contacto real de la tienda. El monograma JJ de las imágenes es aproximado.');
 }
 
 // 3–11 · Una por propuesta
@@ -203,12 +212,12 @@ P.forEach((p, i) => {
       { text: p.n, options: { fill, color: MUTED } },
       { text: p.name, options: { fill, bold: true } },
       { text: p.table || p.bag, options: { fill } },
-      { text: p.print, options: { fill } },
+      { text: p.tablePrint || p.print, options: { fill } },
       { text: p.level, options: { fill, bold: p.level === 'Alta' } },
     ]);
   });
   s.addTable(rows, {
-    x: 0.6, y: 1.45, w: 12.133, colW: [0.6, 2.3, 2.3, 5.333, 1.6], rowH: 0.48,
+    x: 0.6, y: 1.45, w: 12.133, colW: [0.6, 2.3, 2.3, 5.333, 1.6], rowH: 0.44,
     fontFace: SANS, fontSize: 12, color: INK, valign: 'middle', margin: [0.04, 0.12, 0.04, 0.12],
     border: { type: 'solid', pt: 0.5, color: 'DDDDDD' },
   });

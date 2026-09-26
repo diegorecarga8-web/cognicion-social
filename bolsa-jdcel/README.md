@@ -2,7 +2,7 @@
 
 Propuestas de bolsa para **JDCEL Bq** (celulares) en negro y blanco. Todas mantienen el nombre y el eslogan **«bendecidos para bendecir»**.
 
-![Las nueve propuestas](mockups/ideas-bolsa-jdcel.jpg)
+![Las propuestas](mockups/ideas-bolsa-jdcel.jpg)
 
 > **Ojo:** el monograma JJ de los bocetos es una aproximación hecha con tipografía (Playfair Display). Para producción se reemplaza por el vector original del logo. Las demás letras sí coinciden: **Archivo** extendida (JDCEL), **Playball** (Bq) y **EB Garamond** (eslogan), todas gratis en Google Fonts.
 
@@ -27,6 +27,7 @@ Propuestas de bolsa para **JDCEL Bq** (celulares) en negro y blanco. Todas manti
 | 07 | Tipográfico | Blanca | El eslogan como protagonista; cita Génesis 12:2, el versículo del que sale. QR en el fuelle. | 1 tinta negra |
 | 08 | Sello | Negra | Sello circular con el eslogan alrededor del JJ; sirve también como sticker de cierre. | Blanco sobre negro |
 | 09 | Reverso | Blanca | Cara trasera para cualquier opción: WhatsApp, Instagram, dirección y QR. | 1 tinta negra |
+| 10 | Monograma claro | Blanca | Diseño nuevo: patrón gris claro de JJ y cruces, logo grande y el WhatsApp y el Instagram reales al frente. El arte original está en `arte-frente/10-monograma-claro.png`. | Negro y gris claro (el gris como trama del negro) |
 
 Los textos entre corchetes (`[tu número]`, `[@tu_usuario]`, `[dirección del local]`) y el «¡Gracias por tu compra!» son de ejemplo. El QR de los bocetos es de relleno: hay que generar el real (por ejemplo, un enlace `wa.me` al número de la tienda).
 
@@ -49,7 +50,7 @@ Si Canva importa algo raro, `canva/pdf/` tiene los mismos diseños en PDF (Canva
 
 ## Archivos
 
-- `JDCEL-propuestas-bolsa.pptx`: presentación con las bolsas montadas (portada, las nueve de un vistazo, una diapositiva por propuesta con su arte del frente, tabla comparativa y cómo producirla). Las notas del orador explican cada idea.
+- `JDCEL-propuestas-bolsa.pptx`: presentación con las bolsas montadas (portada, las diez de un vistazo, una diapositiva por propuesta con su arte del frente, tabla comparativa y cómo producirla). Las notas del orador explican cada idea.
 - `mockups/`: imágenes JPG de cada bolsa (1800 × 2000 px) y la lámina con todas.
 - `arte-frente/`: el frente de cada propuesta en SVG editable (25 × 30 cm). Se abre en Illustrator, Figma o Inkscape; instala las fuentes o conviértelas en contornos.
 - `canva/`: los mismos frentes listos para importar en Canva (`.pptx`, `.pdf` y gráficos sueltos en SVG).
