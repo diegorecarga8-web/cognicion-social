@@ -37,15 +37,28 @@ Los textos entre corchetes (`[tu número]`, `[@tu_usuario]`, `[dirección del lo
 - **Manijas:** cordón negro o blanco; cinta de gorgorán para una versión más premium.
 - **Boca:** los 3–4 cm de arriba se doblan hacia adentro; no pongas nada importante ahí.
 
+## Editar en Canva
+
+La carpeta `canva/` tiene cada frente armado por piezas para que Canva lo convierta en un diseño editable:
+
+1. En [canva.com](https://www.canva.com), desde el computador: **Crear un diseño → Importar archivo** y elige un `.pptx` (o arrástralo a la ventana).
+2. `JDCEL-bolsas-9-disenos.pptx` trae las nueve bolsas, una por página; `01-corona.pptx` … `09-reverso.pptx` traen cada una por separado. Cada página mide 25 × 30 cm.
+3. Los textos se editan como texto; las formas y los gráficos se mueven y cambian de color; el logo (JJ, JDCEL, Bq) va como gráfico para reemplazarlo por el original.
+
+Si Canva importa algo raro, `canva/pdf/` tiene los mismos diseños en PDF (Canva también los vuelve editables). Con Canva Pro se pueden subir sueltos los SVG de `canva/elementos/`. Más detalles en `canva/LEEME.txt`.
+
 ## Archivos
 
 - `mockups/`: imágenes JPG de cada bolsa (1800 × 2000 px) y la lámina con todas.
 - `arte-frente/`: el frente de cada propuesta en SVG editable (25 × 30 cm). Se abre en Illustrator, Figma o Inkscape; instala las fuentes o conviértelas en contornos.
-- `fuente/`: los scripts que generan los mockups, por si hay que hacer ajustes (Node 22 + Playwright con Chromium):
+- `canva/`: los mismos frentes listos para importar en Canva (`.pptx`, `.pdf` y gráficos sueltos en SVG).
+- `fuente/`: los scripts que generan todo, por si hay que hacer ajustes (Node 22 + Playwright con Chromium; Python para Canva):
 
   ```sh
   cd bolsa-jdcel/fuente
   sh fetch-fonts.sh   # descarga las fuentes a fonts/
   node build.mjs      # genera out/*.jpg y out/svg/*.svg
   node overview.mjs   # genera out/overview.jpg con todas
+  pip install python-pptx fonttools brotli uharfbuzz pyclipper svgelements
+  python3 canva.py    # regenera la carpeta canva/ (los PDF necesitan LibreOffice Impress)
   ```

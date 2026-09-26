@@ -1,0 +1,31 @@
+JDCEL Bq · bolsas editables en Canva
+====================================
+
+Cómo abrirlas (en canva.com, desde el computador):
+1. En la página de inicio pulsa «Crear un diseño» (o «+ Crear») → «Importar archivo»
+   y elige un .pptx. También puedes arrastrar el archivo a la ventana de Canva.
+2. Canva lo convierte en un diseño editable: cada texto, forma y gráfico queda suelto.
+   · JDCEL-bolsas-9-disenos.pptx trae las 9 bolsas, una por página.
+   · 01-corona.pptx … 09-reverso.pptx traen cada bolsa por separado.
+3. Cada página mide 25 × 30 cm: es el frente de la bolsa.
+
+Qué se puede editar:
+· Textos (eslogan, datos de contacto, notificación, cita): doble clic y escribe.
+· Formas y gráficos: mover, cambiar tamaño y color.
+· Logo: el JJ, «JDCEL» y «Bq» van como gráficos. Reemplázalos por tu logo original
+  (arrastra tu archivo encima del gráfico y elige «Reemplazar»).
+
+Si algo no se ve bien:
+· Fuentes: se usan EB Garamond, Archivo y Playball. Si Canva no encuentra alguna,
+  te deja escoger otra parecida.
+· Plan B: la carpeta pdf/ tiene los mismos diseños en PDF; Canva también los importa
+  como diseños editables.
+· Con Canva Pro puedes subir los gráficos sueltos de la carpeta elementos/ (SVG a los
+  que les puedes cambiar el color).
+
+Notas para imprenta:
+· La corona de 01 es una imagen de muestra del relieve; para el troquel usa
+  elementos/corona-relieve.svg.
+· En 06 el patrón gris representa el barniz UV; en la imprenta va como capa aparte.
+· Los datos entre corchetes y el QR son de ejemplo: el QR real se genera con un enlace
+  wa.me al número de la tienda.
