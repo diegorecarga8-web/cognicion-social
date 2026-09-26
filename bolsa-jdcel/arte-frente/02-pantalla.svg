@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600" width="250mm" height="300mm">
+<!-- JDCEL Bq · Pantalla · frente 25 x 30 cm (1 unidad = 0,5 mm). Los 3,6 cm superiores (y < 72) son la boca que se dobla hacia adentro. Monograma JJ aproximado: reemplazar por el vector original. -->
+<style>@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Playfair+Display:wght@900&amp;family=Playball&amp;family=EB+Garamond:ital,wght@0,400;1,400&amp;display=swap');</style>
+<defs>
+  <linearGradient id="gloss" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="500" y2="600"><stop offset="0" stop-color="#424242"/><stop offset=".45" stop-color="#2b2b2b"/><stop offset="1" stop-color="#222222"/></linearGradient>
+  <filter id="emboss" x="-8%" y="-8%" width="116%" height="116%"><feGaussianBlur in="SourceAlpha" stdDeviation="1.4" result="b"/><feOffset in="b" dx="2" dy="2.4" result="bo"/><feFlood flood-color="#000" flood-opacity=".34"/><feComposite in2="bo" operator="in" result="sh"/><feOffset in="b" dx="-1.6" dy="-1.8" result="ho"/><feFlood flood-color="#fff" flood-opacity="1"/><feComposite in2="ho" operator="in" result="hl"/><feMerge><feMergeNode in="sh"/><feMergeNode in="hl"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <clipPath id="cL"><rect x="0" y="0" width="250" height="600"/></clipPath>
+  <clipPath id="cR"><rect x="250" y="0" width="250" height="600"/></clipPath>
+  
+</defs>
+<rect width="500" height="600" fill="#161616"/>
+<rect x="132" y="92" width="236" height="482" rx="42" fill="none" stroke="#f4f4f2" stroke-width="4"/>
+<g fill="#f4f4f2">
+  <rect x="125" y="172" width="4" height="24" rx="2"/>
+  <rect x="125" y="210" width="4" height="44" rx="2"/>
+  <rect x="125" y="264" width="4" height="44" rx="2"/>
+  <rect x="371" y="222" width="4" height="66" rx="2"/>
+  <rect x="216" y="106" width="68" height="21" rx="10.5"/>
+  <rect x="306" y="119" width="2.8" height="4" rx=".6"/><rect x="310.2" y="117" width="2.8" height="6" rx=".6"/><rect x="314.4" y="115" width="2.8" height="8" rx=".6"/><rect x="318.6" y="113" width="2.8" height="10" rx=".6"/>
+  <rect x="332.5" y="115.5" width="12" height="5" rx="1"/>
+  <rect x="348.6" y="116.4" width="1.8" height="3.2" rx=".6"/>
+</g>
+<rect x="330.6" y="113.6" width="16" height="8.8" rx="2.4" fill="none" stroke="#f4f4f2" stroke-width="1.1"/>
+<text x="153" y="122" font-family="Archivo" font-weight="800" font-size="10.5" fill="#f4f4f2">JDCEL</text>
+<g fill="none" stroke="#f4f4f2" stroke-width="1.8"><path d="M245.5 144v-4.2a4.5 4.5 0 0 1 9 0V144"/></g>
+<rect x="242" y="143" width="16" height="12" rx="2.6" fill="#f4f4f2"/>
+<text x="250" y="184" font-family="EB Garamond" font-size="18" fill="#f4f4f2" text-anchor="middle" font-style="italic">bendecidos para bendecir</text>
+<g font-family="Playfair Display" font-weight="900" font-size="118" text-anchor="middle">
+  <text x="235.84" y="292.98" fill="#f4f4f2">J</text>
+  <text x="271.24" y="316.58" fill="#f4f4f2" stroke="#161616" stroke-width="5.31" stroke-linejoin="round" paint-order="stroke">J</text>
+</g>
+<rect x="146" y="364" width="208" height="62" rx="17" fill="#f4f4f2"/>
+<rect x="157" y="378" width="34" height="34" rx="9" fill="#161616"/>
+<g font-family="Playfair Display" font-weight="900" font-size="25" text-anchor="middle">
+  <text x="171" y="397.75" fill="#f4f4f2">J</text>
+  <text x="178.5" y="402.75" fill="#f4f4f2" stroke="#161616" stroke-width="1.13" stroke-linejoin="round" paint-order="stroke">J</text>
+</g>
+<text x="200" y="391" font-family="Archivo" font-weight="800" font-size="11" fill="#111111">JDCEL <tspan font-family="Playball" font-weight="400" font-size="12.5">Bq</tspan></text>
+<text x="343" y="391" font-family="Archivo" font-weight="500" font-size="9.5" fill="#666" text-anchor="end">ahora</text>
+<text x="200" y="409" font-family="EB Garamond" font-size="12.5" fill="#111111">¡Gracias por tu compra!</text>
+<circle cx="174" cy="524" r="21" fill="none" stroke="#f4f4f2" stroke-width="1.6"/>
+<circle cx="326" cy="524" r="21" fill="none" stroke="#f4f4f2" stroke-width="1.6"/>
+<g transform="translate(163 513) scale(0.92)"><path d="M12 2.8a9.2 9.2 0 0 0-7.9 13.9L2.9 21.2l4.6-1.2A9.2 9.2 0 1 0 12 2.8z" fill="none" stroke="#f4f4f2" stroke-width="1.9" stroke-linejoin="round"/><path d="M8.9 7.6c.3-.3.7-.3.9 0l1.2 1.9c.2.3.1.6-.1.9l-.6.7c.7 1.4 1.8 2.5 3.2 3.2l.7-.6c.3-.2.6-.3.9-.1l1.9 1.2c.3.2.3.6 0 .9l-.9.9c-.6.6-1.6.8-2.4.4-2.4-1.1-4.3-3-5.4-5.4-.4-.8-.2-1.8.4-2.4z" fill="#f4f4f2"/></g>
+<g transform="translate(315 513) scale(0.92)" fill="none" stroke="#f4f4f2" stroke-width="1.9"><rect x="3" y="3" width="18" height="18" rx="5.5"/><circle cx="12" cy="12" r="4.3"/><circle cx="17.2" cy="6.8" r="1.1" fill="#f4f4f2" stroke="none"/></g>
+<rect x="205" y="557" width="90" height="5" rx="2.5" fill="#f4f4f2"/>
+</svg>

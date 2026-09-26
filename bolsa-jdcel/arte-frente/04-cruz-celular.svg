@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600" width="250mm" height="300mm">
+<!-- JDCEL Bq · Cruz en el celular · frente 25 x 30 cm (1 unidad = 0,5 mm). Los 3,6 cm superiores (y < 72) son la boca que se dobla hacia adentro. Monograma JJ aproximado: reemplazar por el vector original. -->
+<style>@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Playfair+Display:wght@900&amp;family=Playball&amp;family=EB+Garamond:ital,wght@0,400;1,400&amp;display=swap');</style>
+<defs>
+  <linearGradient id="gloss" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="500" y2="600"><stop offset="0" stop-color="#424242"/><stop offset=".45" stop-color="#2b2b2b"/><stop offset="1" stop-color="#222222"/></linearGradient>
+  <filter id="emboss" x="-8%" y="-8%" width="116%" height="116%"><feGaussianBlur in="SourceAlpha" stdDeviation="1.4" result="b"/><feOffset in="b" dx="2" dy="2.4" result="bo"/><feFlood flood-color="#000" flood-opacity=".34"/><feComposite in2="bo" operator="in" result="sh"/><feOffset in="b" dx="-1.6" dy="-1.8" result="ho"/><feFlood flood-color="#fff" flood-opacity="1"/><feComposite in2="ho" operator="in" result="hl"/><feMerge><feMergeNode in="sh"/><feMergeNode in="hl"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <clipPath id="cL"><rect x="0" y="0" width="250" height="600"/></clipPath>
+  <clipPath id="cR"><rect x="250" y="0" width="250" height="600"/></clipPath>
+  
+</defs>
+<rect width="500" height="600" fill="#ffffff"/>
+<path d="M188 80H237A3 3 0 0 1 240 83V199H161A3 3 0 0 1 158 196V110A30 30 0 0 1 188 80ZM263 80H312A30 30 0 0 1 342 110V196A3 3 0 0 1 339 199H260V83A3 3 0 0 1 263 80ZM161 219H240V437A3 3 0 0 1 237 440H188A30 30 0 0 1 158 410V222A3 3 0 0 1 161 219ZM260 219H339A3 3 0 0 1 342 222V410A30 30 0 0 1 312 440H263A3 3 0 0 1 260 437V219Z" fill="#111111"/>
+<g fill="#111111">
+  <rect x="153" y="130" width="3.5" height="18" rx="1.5"/>
+  <rect x="153" y="160" width="3.5" height="30" rx="1.5"/>
+  <rect x="153" y="198" width="3.5" height="30" rx="1.5"/>
+  <rect x="343.5" y="172" width="3.5" height="46" rx="1.5"/>
+</g>
+<text x="232" y="500" font-family="Archivo" font-weight="900" style="font-stretch:125%" font-size="46" fill="#111111" text-anchor="middle">JDCEL</text>
+<text x="340" y="503" font-family="Playball" font-size="36" fill="#111111" text-anchor="start">Bq</text>
+<text x="250" y="542" font-family="EB Garamond" font-size="21" fill="#111111" text-anchor="middle">bendecidos para bendecir</text>
+</svg>

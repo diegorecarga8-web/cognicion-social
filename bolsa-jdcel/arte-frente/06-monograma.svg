@@ -1,0 +1,259 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600" width="250mm" height="300mm">
+<!-- JDCEL Bq · Monograma · frente 25 x 30 cm (1 unidad = 0,5 mm). Los 3,6 cm superiores (y < 72) son la boca que se dobla hacia adentro. Monograma JJ aproximado: reemplazar por el vector original. -->
+<style>@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Playfair+Display:wght@900&amp;family=Playball&amp;family=EB+Garamond:ital,wght@0,400;1,400&amp;display=swap');</style>
+<defs>
+  <linearGradient id="gloss" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="500" y2="600"><stop offset="0" stop-color="#424242"/><stop offset=".45" stop-color="#2b2b2b"/><stop offset="1" stop-color="#222222"/></linearGradient>
+  <filter id="emboss" x="-8%" y="-8%" width="116%" height="116%"><feGaussianBlur in="SourceAlpha" stdDeviation="1.4" result="b"/><feOffset in="b" dx="2" dy="2.4" result="bo"/><feFlood flood-color="#000" flood-opacity=".34"/><feComposite in2="bo" operator="in" result="sh"/><feOffset in="b" dx="-1.6" dy="-1.8" result="ho"/><feFlood flood-color="#fff" flood-opacity="1"/><feComposite in2="ho" operator="in" result="hl"/><feMerge><feMergeNode in="sh"/><feMergeNode in="hl"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <clipPath id="cL"><rect x="0" y="0" width="250" height="600"/></clipPath>
+  <clipPath id="cR"><rect x="250" y="0" width="250" height="600"/></clipPath>
+  
+</defs>
+<rect width="500" height="600" fill="#161616"/>
+<g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="-46.8" y="-37.6" fill="url(#gloss)">J</text>
+  <text x="-34.8" y="-29.6" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="-1.44" y="-8.5" width="2.89" height="17"/><rect x="-5.44" y="-4.25" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="37.2" y="-37.6" fill="url(#gloss)">J</text>
+  <text x="49.2" y="-29.6" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="82.56" y="-8.5" width="2.89" height="17"/><rect x="78.56" y="-4.25" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="121.2" y="-37.6" fill="url(#gloss)">J</text>
+  <text x="133.2" y="-29.6" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="166.56" y="-8.5" width="2.89" height="17"/><rect x="162.56" y="-4.25" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="205.2" y="-37.6" fill="url(#gloss)">J</text>
+  <text x="217.2" y="-29.6" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="250.56" y="-8.5" width="2.89" height="17"/><rect x="246.56" y="-4.25" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="289.2" y="-37.6" fill="url(#gloss)">J</text>
+  <text x="301.2" y="-29.6" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="334.56" y="-8.5" width="2.89" height="17"/><rect x="330.56" y="-4.25" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="373.2" y="-37.6" fill="url(#gloss)">J</text>
+  <text x="385.2" y="-29.6" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="418.56" y="-8.5" width="2.89" height="17"/><rect x="414.56" y="-4.25" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="457.2" y="-37.6" fill="url(#gloss)">J</text>
+  <text x="469.2" y="-29.6" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="502.56" y="-8.5" width="2.89" height="17"/><rect x="498.56" y="-4.25" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="541.2" y="-37.6" fill="url(#gloss)">J</text>
+  <text x="553.2" y="-29.6" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="586.55" y="-8.5" width="2.89" height="17"/><rect x="582.56" y="-4.25" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="-46.8" y="46.4" fill="url(#gloss)">J</text>
+  <text x="-34.8" y="54.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="-1.44" y="75.5" width="2.89" height="17"/><rect x="-5.44" y="79.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="37.2" y="46.4" fill="url(#gloss)">J</text>
+  <text x="49.2" y="54.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="82.56" y="75.5" width="2.89" height="17"/><rect x="78.56" y="79.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="121.2" y="46.4" fill="url(#gloss)">J</text>
+  <text x="133.2" y="54.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="166.56" y="75.5" width="2.89" height="17"/><rect x="162.56" y="79.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="205.2" y="46.4" fill="url(#gloss)">J</text>
+  <text x="217.2" y="54.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="250.56" y="75.5" width="2.89" height="17"/><rect x="246.56" y="79.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="289.2" y="46.4" fill="url(#gloss)">J</text>
+  <text x="301.2" y="54.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="334.56" y="75.5" width="2.89" height="17"/><rect x="330.56" y="79.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="373.2" y="46.4" fill="url(#gloss)">J</text>
+  <text x="385.2" y="54.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="418.56" y="75.5" width="2.89" height="17"/><rect x="414.56" y="79.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="457.2" y="46.4" fill="url(#gloss)">J</text>
+  <text x="469.2" y="54.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="502.56" y="75.5" width="2.89" height="17"/><rect x="498.56" y="79.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="541.2" y="46.4" fill="url(#gloss)">J</text>
+  <text x="553.2" y="54.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="586.55" y="75.5" width="2.89" height="17"/><rect x="582.56" y="79.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="-46.8" y="130.4" fill="url(#gloss)">J</text>
+  <text x="-34.8" y="138.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="-1.44" y="159.5" width="2.89" height="17"/><rect x="-5.44" y="163.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="37.2" y="130.4" fill="url(#gloss)">J</text>
+  <text x="49.2" y="138.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="82.56" y="159.5" width="2.89" height="17"/><rect x="78.56" y="163.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="121.2" y="130.4" fill="url(#gloss)">J</text>
+  <text x="133.2" y="138.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="166.56" y="159.5" width="2.89" height="17"/><rect x="162.56" y="163.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="205.2" y="130.4" fill="url(#gloss)">J</text>
+  <text x="217.2" y="138.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="250.56" y="159.5" width="2.89" height="17"/><rect x="246.56" y="163.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="289.2" y="130.4" fill="url(#gloss)">J</text>
+  <text x="301.2" y="138.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="334.56" y="159.5" width="2.89" height="17"/><rect x="330.56" y="163.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="373.2" y="130.4" fill="url(#gloss)">J</text>
+  <text x="385.2" y="138.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="418.56" y="159.5" width="2.89" height="17"/><rect x="414.56" y="163.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="457.2" y="130.4" fill="url(#gloss)">J</text>
+  <text x="469.2" y="138.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="502.56" y="159.5" width="2.89" height="17"/><rect x="498.56" y="163.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="541.2" y="130.4" fill="url(#gloss)">J</text>
+  <text x="553.2" y="138.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="586.55" y="159.5" width="2.89" height="17"/><rect x="582.56" y="163.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="-46.8" y="214.4" fill="url(#gloss)">J</text>
+  <text x="-34.8" y="222.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="-1.44" y="243.5" width="2.89" height="17"/><rect x="-5.44" y="247.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="37.2" y="214.4" fill="url(#gloss)">J</text>
+  <text x="49.2" y="222.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="82.56" y="243.5" width="2.89" height="17"/><rect x="78.56" y="247.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="121.2" y="214.4" fill="url(#gloss)">J</text>
+  <text x="133.2" y="222.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="166.56" y="243.5" width="2.89" height="17"/><rect x="162.56" y="247.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="205.2" y="214.4" fill="url(#gloss)">J</text>
+  <text x="217.2" y="222.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="250.56" y="243.5" width="2.89" height="17"/><rect x="246.56" y="247.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="289.2" y="214.4" fill="url(#gloss)">J</text>
+  <text x="301.2" y="222.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="334.56" y="243.5" width="2.89" height="17"/><rect x="330.56" y="247.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="373.2" y="214.4" fill="url(#gloss)">J</text>
+  <text x="385.2" y="222.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="418.56" y="243.5" width="2.89" height="17"/><rect x="414.56" y="247.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="457.2" y="214.4" fill="url(#gloss)">J</text>
+  <text x="469.2" y="222.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="502.56" y="243.5" width="2.89" height="17"/><rect x="498.56" y="247.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="541.2" y="214.4" fill="url(#gloss)">J</text>
+  <text x="553.2" y="222.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="586.55" y="243.5" width="2.89" height="17"/><rect x="582.56" y="247.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="-46.8" y="298.4" fill="url(#gloss)">J</text>
+  <text x="-34.8" y="306.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="-1.44" y="327.5" width="2.89" height="17"/><rect x="-5.44" y="331.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="37.2" y="298.4" fill="url(#gloss)">J</text>
+  <text x="49.2" y="306.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="82.56" y="327.5" width="2.89" height="17"/><rect x="78.56" y="331.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="121.2" y="298.4" fill="url(#gloss)">J</text>
+  <text x="133.2" y="306.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="166.56" y="327.5" width="2.89" height="17"/><rect x="162.56" y="331.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="205.2" y="298.4" fill="url(#gloss)">J</text>
+  <text x="217.2" y="306.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="250.56" y="327.5" width="2.89" height="17"/><rect x="246.56" y="331.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="289.2" y="298.4" fill="url(#gloss)">J</text>
+  <text x="301.2" y="306.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="334.56" y="327.5" width="2.89" height="17"/><rect x="330.56" y="331.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="373.2" y="298.4" fill="url(#gloss)">J</text>
+  <text x="385.2" y="306.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="418.56" y="327.5" width="2.89" height="17"/><rect x="414.56" y="331.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="457.2" y="298.4" fill="url(#gloss)">J</text>
+  <text x="469.2" y="306.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="502.56" y="327.5" width="2.89" height="17"/><rect x="498.56" y="331.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="541.2" y="298.4" fill="url(#gloss)">J</text>
+  <text x="553.2" y="306.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="586.55" y="327.5" width="2.89" height="17"/><rect x="582.56" y="331.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="-46.8" y="382.4" fill="url(#gloss)">J</text>
+  <text x="-34.8" y="390.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="-1.44" y="411.5" width="2.89" height="17"/><rect x="-5.44" y="415.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="37.2" y="382.4" fill="url(#gloss)">J</text>
+  <text x="49.2" y="390.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="82.56" y="411.5" width="2.89" height="17"/><rect x="78.56" y="415.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="121.2" y="382.4" fill="url(#gloss)">J</text>
+  <text x="133.2" y="390.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="166.56" y="411.5" width="2.89" height="17"/><rect x="162.56" y="415.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="205.2" y="382.4" fill="url(#gloss)">J</text>
+  <text x="217.2" y="390.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="250.56" y="411.5" width="2.89" height="17"/><rect x="246.56" y="415.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="289.2" y="382.4" fill="url(#gloss)">J</text>
+  <text x="301.2" y="390.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="334.56" y="411.5" width="2.89" height="17"/><rect x="330.56" y="415.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="373.2" y="382.4" fill="url(#gloss)">J</text>
+  <text x="385.2" y="390.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="418.56" y="411.5" width="2.89" height="17"/><rect x="414.56" y="415.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="457.2" y="382.4" fill="url(#gloss)">J</text>
+  <text x="469.2" y="390.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="502.56" y="411.5" width="2.89" height="17"/><rect x="498.56" y="415.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="541.2" y="382.4" fill="url(#gloss)">J</text>
+  <text x="553.2" y="390.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="586.55" y="411.5" width="2.89" height="17"/><rect x="582.56" y="415.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="-46.8" y="466.4" fill="url(#gloss)">J</text>
+  <text x="-34.8" y="474.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="-1.44" y="495.5" width="2.89" height="17"/><rect x="-5.44" y="499.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="37.2" y="466.4" fill="url(#gloss)">J</text>
+  <text x="49.2" y="474.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="82.56" y="495.5" width="2.89" height="17"/><rect x="78.56" y="499.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="121.2" y="466.4" fill="url(#gloss)">J</text>
+  <text x="133.2" y="474.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="166.56" y="495.5" width="2.89" height="17"/><rect x="162.56" y="499.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="205.2" y="466.4" fill="url(#gloss)">J</text>
+  <text x="217.2" y="474.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="250.56" y="495.5" width="2.89" height="17"/><rect x="246.56" y="499.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="289.2" y="466.4" fill="url(#gloss)">J</text>
+  <text x="301.2" y="474.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="334.56" y="495.5" width="2.89" height="17"/><rect x="330.56" y="499.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="373.2" y="466.4" fill="url(#gloss)">J</text>
+  <text x="385.2" y="474.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="418.56" y="495.5" width="2.89" height="17"/><rect x="414.56" y="499.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="457.2" y="466.4" fill="url(#gloss)">J</text>
+  <text x="469.2" y="474.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="502.56" y="495.5" width="2.89" height="17"/><rect x="498.56" y="499.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="541.2" y="466.4" fill="url(#gloss)">J</text>
+  <text x="553.2" y="474.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="586.55" y="495.5" width="2.89" height="17"/><rect x="582.56" y="499.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="-46.8" y="550.4" fill="url(#gloss)">J</text>
+  <text x="-34.8" y="558.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="-1.44" y="579.5" width="2.89" height="17"/><rect x="-5.44" y="583.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="37.2" y="550.4" fill="url(#gloss)">J</text>
+  <text x="49.2" y="558.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="82.56" y="579.5" width="2.89" height="17"/><rect x="78.56" y="583.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="121.2" y="550.4" fill="url(#gloss)">J</text>
+  <text x="133.2" y="558.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="166.56" y="579.5" width="2.89" height="17"/><rect x="162.56" y="583.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="205.2" y="550.4" fill="url(#gloss)">J</text>
+  <text x="217.2" y="558.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="250.56" y="579.5" width="2.89" height="17"/><rect x="246.56" y="583.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="289.2" y="550.4" fill="url(#gloss)">J</text>
+  <text x="301.2" y="558.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="334.56" y="579.5" width="2.89" height="17"/><rect x="330.56" y="583.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="373.2" y="550.4" fill="url(#gloss)">J</text>
+  <text x="385.2" y="558.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="418.56" y="579.5" width="2.89" height="17"/><rect x="414.56" y="583.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="457.2" y="550.4" fill="url(#gloss)">J</text>
+  <text x="469.2" y="558.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="502.56" y="579.5" width="2.89" height="17"/><rect x="498.56" y="583.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="541.2" y="550.4" fill="url(#gloss)">J</text>
+  <text x="553.2" y="558.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="586.55" y="579.5" width="2.89" height="17"/><rect x="582.56" y="583.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="-46.8" y="634.4" fill="url(#gloss)">J</text>
+  <text x="-34.8" y="642.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="-1.44" y="663.5" width="2.89" height="17"/><rect x="-5.44" y="667.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="37.2" y="634.4" fill="url(#gloss)">J</text>
+  <text x="49.2" y="642.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="82.56" y="663.5" width="2.89" height="17"/><rect x="78.56" y="667.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="121.2" y="634.4" fill="url(#gloss)">J</text>
+  <text x="133.2" y="642.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="166.56" y="663.5" width="2.89" height="17"/><rect x="162.56" y="667.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="205.2" y="634.4" fill="url(#gloss)">J</text>
+  <text x="217.2" y="642.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="250.56" y="663.5" width="2.89" height="17"/><rect x="246.56" y="667.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="289.2" y="634.4" fill="url(#gloss)">J</text>
+  <text x="301.2" y="642.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="334.56" y="663.5" width="2.89" height="17"/><rect x="330.56" y="667.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="373.2" y="634.4" fill="url(#gloss)">J</text>
+  <text x="385.2" y="642.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="418.56" y="663.5" width="2.89" height="17"/><rect x="414.56" y="667.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="457.2" y="634.4" fill="url(#gloss)">J</text>
+  <text x="469.2" y="642.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="502.56" y="663.5" width="2.89" height="17"/><rect x="498.56" y="667.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="541.2" y="634.4" fill="url(#gloss)">J</text>
+  <text x="553.2" y="642.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="586.55" y="663.5" width="2.89" height="17"/><rect x="582.56" y="667.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="-46.8" y="718.4" fill="url(#gloss)">J</text>
+  <text x="-34.8" y="726.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="-1.44" y="747.5" width="2.89" height="17"/><rect x="-5.44" y="751.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="37.2" y="718.4" fill="url(#gloss)">J</text>
+  <text x="49.2" y="726.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="82.56" y="747.5" width="2.89" height="17"/><rect x="78.56" y="751.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="121.2" y="718.4" fill="url(#gloss)">J</text>
+  <text x="133.2" y="726.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="166.56" y="747.5" width="2.89" height="17"/><rect x="162.56" y="751.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="205.2" y="718.4" fill="url(#gloss)">J</text>
+  <text x="217.2" y="726.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="250.56" y="747.5" width="2.89" height="17"/><rect x="246.56" y="751.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="289.2" y="718.4" fill="url(#gloss)">J</text>
+  <text x="301.2" y="726.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="334.56" y="747.5" width="2.89" height="17"/><rect x="330.56" y="751.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="373.2" y="718.4" fill="url(#gloss)">J</text>
+  <text x="385.2" y="726.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="418.56" y="747.5" width="2.89" height="17"/><rect x="414.56" y="751.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="457.2" y="718.4" fill="url(#gloss)">J</text>
+  <text x="469.2" y="726.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="502.56" y="747.5" width="2.89" height="17"/><rect x="498.56" y="751.75" width="10.88" height="2.89"/></g><g font-family="Playfair Display" font-weight="900" font-size="40" text-anchor="middle">
+  <text x="541.2" y="718.4" fill="url(#gloss)">J</text>
+  <text x="553.2" y="726.4" fill="url(#gloss)" stroke="#161616" stroke-width="1.8" stroke-linejoin="round" paint-order="stroke">J</text>
+</g><g fill="url(#gloss)"><rect x="586.55" y="747.5" width="2.89" height="17"/><rect x="582.56" y="751.75" width="10.88" height="2.89"/></g>
+<rect x="116" y="212" width="268" height="176" fill="#f6f6f4"/>
+<rect x="123.5" y="219.5" width="253" height="161" fill="none" stroke="#111111" stroke-width="1.2"/>
+<text x="250" y="290" font-family="Archivo" font-weight="900" style="font-stretch:125%" font-size="50" fill="#111111" text-anchor="middle">JDCEL</text>
+<text x="250" y="328" font-family="Playball" font-size="36" fill="#111111" text-anchor="middle">Bq</text>
+<line x1="215" x2="285" y1="342" y2="342" stroke="#111111" stroke-width="1"/>
+<text x="250" y="366" font-family="EB Garamond" font-size="16.5" fill="#111111" text-anchor="middle">bendecidos para bendecir</text>
+</svg>
