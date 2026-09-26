@@ -1,6 +1,9 @@
 const { chromium } = await import('playwright').catch(() => import('/opt/node22/lib/node_modules/playwright/index.mjs'));
 import fs from 'node:fs';
 import path from 'node:path';
+import { createRequire } from 'node:module';
+
+const QRCode = createRequire(import.meta.url)('qrcode');
 
 const DIR = path.dirname(new URL(import.meta.url).pathname);
 const OUT = path.join(DIR, 'out');
@@ -86,6 +89,22 @@ function qr(x, y, size, c, seed = 11) {
       if (v === 1) d += `M${f(x + xx * m)} ${f(y + yy * m)}h${f(m)}v${f(m)}h${f(-m)}z`;
     }
   return `<path d="${d}" fill="${c}" shape-rendering="crispEdges"/>`;
+}
+
+// QR real (se puede escanear): módulos negros unidos por filas para que no queden rayas entre ellos
+function qrCode(x, y, size, c, text) {
+  const q = QRCode.create(text, { errorCorrectionLevel: 'Q' });
+  const n = q.modules.size;
+  const m = size / n;
+  let d = '';
+  for (let r = 0; r < n; r++)
+    for (let col = 0; col < n; col++) {
+      if (!q.modules.get(r, col) || (col > 0 && q.modules.get(r, col - 1))) continue;
+      let run = 1;
+      while (col + run < n && q.modules.get(r, col + run)) run++;
+      d += `M${f(x + col * m)} ${f(y + r * m)}h${f(run * m)}v${f(m)}h${f(-run * m)}z`;
+    }
+  return `<path d="${d}" fill="${c}"/>`;
 }
 
 // crown of thorns: woven strands + thorns
@@ -586,9 +605,25 @@ add('15-bq-gigante', 'Bq gigante', () => ({
   front: `<text x="-40" y="345" ${FONT.script} font-size="560" fill="${W_INK}">Bq</text>${lockup(W_INK)}`,
 }));
 
+
+// ---------------------------------------------------------------- diseño final (el que eligió el cliente)
+// Su arte en el frente y un QR real de WhatsApp en el costado, en dos alturas.
+const WHATSAPP = 'https://wa.me/573117346937';
+const finalFront = `<image href="../../arte-frente/final-frente.png" x="0" y="0" width="500" height="600" preserveAspectRatio="xMidYMid slice" style="mix-blend-mode:multiply"/>`;
+add('final-a-qr-como-antes', 'Final · QR como antes', () => ({ theme: 'white', raster: true, fuelle: true, front: finalFront, gusset: qrCode(36, 330, 128, INK, WHATSAPP) }));
+add('final-b-qr-mas-arriba', 'Final · QR más arriba', () => ({ theme: 'white', raster: true, fuelle: true, front: finalFront, gusset: qrCode(36, 193, 128, INK, WHATSAPP) }));
+
 // ---------------------------------------------------------------- flat vector art (front panel only)
 const SVG_FONTS = "@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&amp;family=Playfair+Display:wght@900&amp;family=Playball&amp;family=EB+Garamond:ital,wght@0,400;1,400&amp;display=swap');";
 fs.mkdirSync(path.join(OUT, 'svg'), { recursive: true });
+for (const c of concepts.filter((k) => k.fuelle)) {
+  fs.writeFileSync(path.join(OUT, 'svg', `fuelle-${c.id}.svg`), `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 600" width="100mm" height="300mm">
+<!-- JDCEL Bq · ${c.title} · costado (fuelle) de 10 x 30 cm; se dobla por la mitad (x = 100) cuando la bolsa se aplana. QR: WhatsApp 3117346937 -->
+<rect width="200" height="600" fill="#ffffff"/>
+${c.gusset}
+</svg>
+`);
+}
 for (const c of concepts.filter((k) => !k.raster)) {
   const paper = c.theme === 'black' ? BLACK : '#ffffff';
   const flat = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 600" width="250mm" height="300mm">

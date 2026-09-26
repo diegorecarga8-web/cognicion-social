@@ -47,6 +47,17 @@ De la bolsa de referencia se toma la estructura, no el dibujo: el símbolo de la
 
 Presentación: `JDCEL-propuestas-bolsa-ronda-2.pptx`. Para Canva: `canva/JDCEL-bolsas-ronda-2.pptx` (las cinco) o cada una por separado (`canva/11-…` a `canva/15-…`).
 
+## Diseño final (el que eligió el cliente)
+
+![Diseño final, versiones A y B](mockups/final-comparacion.jpg)
+
+El arte del frente es el del cliente (`arte-frente/final-frente.png`). En el costado va un QR real que abre el chat de WhatsApp del 311 734 6937 (`https://wa.me/573117346937`), en dos alturas:
+
+- **A · QR como antes:** a 16,5 cm del borde de arriba (`mockups/final-a-qr-como-antes.jpg`).
+- **B · QR más arriba:** a 9,6 cm, a la altura del eslogan grande (`mockups/final-b-qr-mas-arriba.jpg`).
+
+El QR mide 6,4 × 6,4 cm y va centrado en el costado de 10 cm. Para montarlo en Canva: `canva/elementos/qr-whatsapp-3117346937.png` (o `.svg`). El costado completo (10 × 30 cm) en las dos alturas está en `arte-fuelle/`. Ese costado se dobla por la mitad cuando la bolsa se guarda plana, así que conviene probar el QR impreso antes del tiraje.
+
 ## Producción
 
 - **Tamaños:** mediana 25 × 30 × 10 cm (celular en su caja + accesorios); pequeña 18 × 22 × 8 cm (accesorios).

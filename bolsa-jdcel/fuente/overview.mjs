@@ -9,6 +9,9 @@ const SETS = {
   ['07-tipografico', '07 · Tipográfico'], ['08-sello', '08 · Sello'], ['09-reverso', '09 · Reverso (para cualquiera)'],
   ['10-monograma-claro', '10 · Monograma claro'],
   ] },
+  final: { out: 'overview-final.jpg', cols: 2, title: 'diseño final · QR de WhatsApp en el costado', items: [
+    ['final-a-qr-como-antes', 'A · QR como antes (a 16,5 cm del borde de arriba)'], ['final-b-qr-mas-arriba', 'B · QR más arriba (a 9,6 cm, a la altura del eslogan)'],
+  ] },
   'ronda-2': { out: 'overview-ronda-2.jpg', cols: 5, title: 'ronda 2 · a partir de la referencia del cliente', items: [
     ['11-monograma-gigante', '11 · Monograma gigante'], ['12-jj-en-cinta', '12 · JJ en cinta'], ['13-cruz-en-franjas', '13 · Cruz en franjas'],
     ['14-senal', '14 · Señal'], ['15-bq-gigante', '15 · Bq gigante'],
